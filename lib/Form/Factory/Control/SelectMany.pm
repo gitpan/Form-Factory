@@ -1,5 +1,5 @@
 package Form::Factory::Control::SelectMany;
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 
 use Moose;
@@ -19,7 +19,7 @@ Form::Factory::Control::SelectMany - the multi-select control
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 SYNOPSIS
 
@@ -29,7 +29,7 @@ version 0.001
           label => 'Just select some of these already...",
           available_choices => [
               Form::Factory::Control::Choice->new('one');
-              Formfactory::Control::Choice->new('two');
+              Form::Factory::Control::Choice->new('two');
               Form::Factory::Control::Choice->new('three');
           ],
           default_selected_choices => [ qw( one three ) ],

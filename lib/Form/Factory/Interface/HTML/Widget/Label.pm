@@ -1,18 +1,18 @@
-package Form::Factory::Factory::HTML::Widget::Span;
-our $VERSION = '0.001';
+package Form::Factory::Interface::HTML::Widget::Label;
+our $VERSION = '0.002';
 
 
 use Moose;
 
-extends qw( Form::Factory::Factory::HTML::Widget::Element );
+extends qw( Form::Factory::Interface::HTML::Widget::Element );
 
 =head1 NAME
 
-Form::Factory::Factory::HTML::Widget::Span - HTML factory widget helper
+Form::Factory::Interface::HTML::Widget::Label - HTML interface widget helper
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 DESCRIPTION
 
@@ -21,14 +21,26 @@ Move along. Nothing to see here.
 =cut
 
 has '+tag_name' => (
-    default   => 'span',
+    default   => 'label',
+);
+
+has for => (
+    is        => 'ro',
+    isa       => 'Str',
+    required  => 1,
 );
 
 has '+content' => (
     required  => 1,
 );
 
-sub has_content { 1 }
+override more_attributes => sub {
+    my $self = shift;
+
+    return {
+        for => $self->for,
+    };
+};
 
 =head1 AUTHOR
 

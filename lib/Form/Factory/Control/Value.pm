@@ -1,12 +1,14 @@
 package Form::Factory::Control::Value;
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 
 use Moose;
 
 with qw(
     Form::Factory::Control
+    Form::Factory::Control::Role::HiddenValue
     Form::Factory::Control::Role::Labeled
+    Form::Factory::Control::Role::PresetValue
     Form::Factory::Control::Role::ScalarValue
 );
 
@@ -16,7 +18,7 @@ Form::Factory::Control::Value - A read-only value control
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 SYNOPSIS
 
@@ -31,7 +33,7 @@ version 0.001
 
 =head1 DESCRIPTION
 
-A read-only value. These may be displayed in the form or just passed through the stash. They might be passed by form submission as well (depending on the factory, but this should be avoided).
+A read-only value. These may be displayed in the form or just passed through the stash. They might be passed by form submission as well (depending on the interface, but this should be avoided).
 
 This control implements L<Form::Factory::Control>, L<Form::Factory::Control::Role::Labeled>, L<Form::Factory::Control::Role::ScalarValue>.
 

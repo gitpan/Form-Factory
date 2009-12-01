@@ -1,15 +1,15 @@
 package Form::Factory::Test::Action;
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 
 use Test::Able::Role;
 
-has factory => (
+has interface => (
     is         => 'ro',
-    does       => 'Form::Factory::Factory',
+    does       => 'Form::Factory::Interface',
     required   => 1,
     lazy       => 1,
-    default    => sub { Form::Factory->new_factory('HTML') },
+    default    => sub { Form::Factory->new_interface('HTML') },
 );
 
 has action => (

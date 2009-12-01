@@ -1,5 +1,5 @@
-package Form::Factory::Factory::HTML::Widget;
-our $VERSION = '0.001';
+package Form::Factory::Interface::HTML::Widget;
+our $VERSION = '0.002';
 
 
 use Moose::Role;
@@ -8,11 +8,11 @@ requires qw( render_control consume_control );
 
 =head1 NAME
 
-Form::Factory::Factory::HTML::Widget - rendering/consuming HTML controls
+Form::Factory::Interface::HTML::Widget - rendering/consuming HTML controls
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 DESCRIPTION
 

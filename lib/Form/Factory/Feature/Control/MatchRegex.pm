@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Control::MatchRegex;
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 
 use Moose;
@@ -15,7 +15,7 @@ Form::Factory::Feature::Control::MatchRegex - Match a control value against a re
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 SYNOPSIS
 

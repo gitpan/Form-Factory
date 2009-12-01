@@ -1,5 +1,5 @@
 package Form::Factory::Control;
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 
 use Moose::Role;
@@ -15,7 +15,7 @@ Form::Factory::Control - high-level API for working with form controls
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 DESCRIPTION
 
@@ -33,6 +33,18 @@ has name => (
     is        => 'ro',
     isa       => 'Str',
     required  => 1,
+);
+
+=head2 documentation
+
+This holds a copy the documentation attribute of the original meta attribute.
+
+=cut
+
+has documentation => (
+    is        => 'ro',
+    isa       => 'Str',
+    predicate => 'has_documentation',
 );
 
 =head2 feature

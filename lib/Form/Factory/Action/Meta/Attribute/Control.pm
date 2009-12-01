@@ -1,11 +1,11 @@
 package Moose::Meta::Attribute::Custom::Trait::Form::Control;
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 
 sub register_implementation { 'Form::Factory::Action::Meta::Attribute::Control' }
 
 package Form::Factory::Action::Meta::Attribute::Control;
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 
 use Moose::Role;
@@ -16,12 +16,12 @@ Form::Factory::Action::Meta::Attribute::Control - Form control attribute-traits
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 SYNOPSIS
 
   package MyApp::Action::Foo;
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 
   use Form::Factory::Processor;
@@ -61,7 +61,7 @@ has placement => (
 
 =head2 control
 
-This is the short name of the control. See L<Form::Factory::Factory/CONTROLS> for a list of built-in controls.
+This is the short name of the control. See L<Form::Factory::Interface/CONTROLS> for a list of built-in controls.
 
 =cut
 

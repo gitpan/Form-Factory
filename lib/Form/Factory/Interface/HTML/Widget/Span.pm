@@ -1,18 +1,18 @@
-package Form::Factory::Factory::HTML::Widget::ListItem;
-our $VERSION = '0.001';
+package Form::Factory::Interface::HTML::Widget::Span;
+our $VERSION = '0.002';
 
 
 use Moose;
 
-extends qw( Form::Factory::Factory::HTML::Widget::Element );
+extends qw( Form::Factory::Interface::HTML::Widget::Element );
 
 =head1 NAME
 
-Form::Factory::Factory::HTML::Widget::ListItem - HTML factory widget helper
+Form::Factory::Interface::HTML::Widget::Span - HTML interface widget helper
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 DESCRIPTION
 
@@ -21,7 +21,7 @@ Move along. Nothing to see here.
 =cut
 
 has '+tag_name' => (
-    default   => 'li',
+    default   => 'span',
 );
 
 has '+content' => (

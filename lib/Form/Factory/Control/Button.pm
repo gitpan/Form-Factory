@@ -1,5 +1,5 @@
 package Form::Factory::Control::Button;
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 
 use Moose;
@@ -7,6 +7,7 @@ use Moose;
 with qw(
     Form::Factory::Control
     Form::Factory::Control::Role::Labeled
+    Form::Factory::Control::Role::PresetValue
     Form::Factory::Control::Role::ScalarValue
 );
 
@@ -16,7 +17,7 @@ Form::Factory::Control::Button - The button control
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 SYNOPSIS
 

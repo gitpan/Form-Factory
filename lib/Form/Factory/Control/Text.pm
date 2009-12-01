@@ -1,5 +1,5 @@
 package Form::Factory::Control::Text;
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 
 use Moose;
@@ -16,7 +16,7 @@ Form::Factory::Control::Text - A single line text field
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 SYNOPSIS
 
@@ -32,7 +32,7 @@ version 0.001
 
 A regular text box.
 
-This control implements L<Form::Factory::Control>, L<Form::Factory::Control::Role::Labeled>, and L<Formfactory::Control::Role::ScalarValue>.
+This control implements L<Form::Factory::Control>, L<Form::Factory::Control::Role::Labeled>, and L<Form::Factory::Control::Role::ScalarValue>.
 
 =head1 ATTRIBUTES
 

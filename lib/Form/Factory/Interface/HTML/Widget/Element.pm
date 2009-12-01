@@ -1,18 +1,18 @@
-package Form::Factory::Factory::HTML::Widget::Element;
-our $VERSION = '0.001';
+package Form::Factory::Interface::HTML::Widget::Element;
+our $VERSION = '0.002';
 
 
 use Moose;
 
-with qw( Form::Factory::Factory::HTML::Widget );
+with qw( Form::Factory::Interface::HTML::Widget );
 
 =head1 NAME
 
-Form::Factory::Factory::HTML::Widget::Element - HTML factory widget helper
+Form::Factory::Interface::HTML::Widget::Element - HTML interface widget helper
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 DESCRIPTION
 

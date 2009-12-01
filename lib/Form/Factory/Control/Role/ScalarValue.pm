@@ -1,10 +1,12 @@
 package Form::Factory::Control::Role::ScalarValue;
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 
 use Moose::Role;
 
 requires qw( current_value );
+
+excludes qw( FormFactory::Control::Role::ListValue );
 
 =head1 NAME
 
@@ -12,7 +14,7 @@ Form::Factory::Control::Role::ScalarValue - scalar valued controls
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 DESCRIPTION
 

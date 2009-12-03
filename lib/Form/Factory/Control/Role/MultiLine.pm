@@ -1,5 +1,5 @@
 package Form::Factory::Control::Role::MultiLine;
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 
 use Moose::Role;
@@ -10,7 +10,7 @@ Form::Factory::Control::Role::MultiLine - multiline controls
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 DESCRIPTION
 

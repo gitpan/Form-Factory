@@ -1,5 +1,5 @@
 package Form::Factory::Action;
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 
 use Moose::Role;
@@ -17,12 +17,12 @@ Form::Factory::Action - Role implemented by actions
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head2 SYNOPSIS
 
   package MyApp::Action::Foo;
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 
   use Form::Factory::Processor;
@@ -404,6 +404,24 @@ sub consume {
 
     my $controls = $self->controls;
     $self->form_interface->consume_control($controls->{$_}, %params) for @names;
+}
+
+=head2 consume_control
+
+  $action->consume_control($name, \%options, %params);
+
+Consumes the value of a one time control. This is useful for testing to see if a form submitted using a one-time control has been submitted or not.
+
+=cut
+
+sub consume_control {
+    my ($self, $name, $options, %params) = @_;
+
+    $params{results} = $self->results;
+
+    $self->form_interface->consume_control(
+        $self->form_interface->new_control($name => $options), %params
+    );
 }
 
 =head2 clean

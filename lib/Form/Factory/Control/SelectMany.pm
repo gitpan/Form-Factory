@@ -1,5 +1,5 @@
 package Form::Factory::Control::SelectMany;
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 
 use Moose;
@@ -19,7 +19,7 @@ Form::Factory::Control::SelectMany - the multi-select control
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 SYNOPSIS
 

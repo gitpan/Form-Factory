@@ -1,5 +1,5 @@
 package Form::Factory::Test::Action::Controls;
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 
 use Test::Able;

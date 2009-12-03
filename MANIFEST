@@ -64,11 +64,14 @@ t/lib/Form/Factory/Test.pm
 t/lib/Form/Factory/Test/Action.pm
 t/lib/Form/Factory/Test/Action/Basic.pm
 t/lib/Form/Factory/Test/Action/Controls.pm
+t/lib/Form/Factory/Test/Feature.pm
+t/lib/Form/Factory/Test/Feature/Control/Length.pm
 t/lib/Form/Factory/Test/Interface.pm
 t/lib/Form/Factory/Test/Interface/CLI.pm
 t/lib/Form/Factory/Test/Interface/HTML.pm
 t/lib/TestApp/Action/Basic.pm
 t/lib/TestApp/Action/EveryControl.pm
+t/lib/TestApp/Action/Featureful.pm
 t/release-pod-coverage.t
 t/release-pod-syntax.t
 t/tests.t

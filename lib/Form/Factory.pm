@@ -3,7 +3,7 @@ use Moose;
 
 use Form::Factory::Util qw( class_name_from_name );
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 =head1 NAME
 
@@ -11,7 +11,7 @@ Form::Factory - a general-purpose form handling API
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 SYNOPSIS
 

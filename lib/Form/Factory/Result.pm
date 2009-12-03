@@ -1,5 +1,5 @@
 package Form::Factory::Result;
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 
 use Moose::Role;
@@ -12,7 +12,7 @@ Form::Factory::Result - Interface for the result classes
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 SYNOPSIS
 
@@ -67,7 +67,7 @@ sub _return(&@) {
     my ($filter, @messages) = @_;
     
     my @filtered = grep { $filter->() } @messages;
-    return wantarray ? @filtered : join "\n", @filtered;
+    return wantarray ? @filtered : join "\n", map { $_->message } @filtered;
 }
 
 sub all_messages {

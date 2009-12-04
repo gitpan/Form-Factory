@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Role::Control;
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 
 use Moose::Role;
@@ -14,12 +14,12 @@ Form::Factory::Feature::Role::Control - Form features tied to particular control
 
 =head1 VERSION
 
-version 0.003
+version 0.004
 
 =head1 SYNOPSIS
 
   package Form::Factory::Feature::Control::Color;
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 
   use Moose;
@@ -51,7 +51,7 @@ our $VERSION = '0.003';
 And then used in an action via:
 
   package MyApp::Action::Foo;
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 
   use Form::Factory::Processor;

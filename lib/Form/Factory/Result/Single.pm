@@ -1,5 +1,5 @@
 package Form::Factory::Result::Single;
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 
 use Moose;
@@ -12,7 +12,7 @@ Form::Factory::Result::Single - Form result class representing a single result
 
 =head1 VERSION
 
-version 0.003
+version 0.004
 
 =head1 SYNOPSIS
 

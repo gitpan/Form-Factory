@@ -1,5 +1,5 @@
 package Form::Factory::Interface::CLI;
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 
 use Moose;
@@ -12,7 +12,7 @@ Form::Factory::Interface::CLI - Command-line interface builder for form factory
 
 =head1 VERSION
 
-version 0.003
+version 0.004
 
 =head1 SYNOPSIS
 
@@ -116,8 +116,7 @@ sub render_control {
         $arg = '[ ' . join(' | ', @values) . ' ]';
     }
     elsif ($control->does('Form::Factory::Control::Role::BooleanValue')) {
-        my @values = ($control->true_value, $control->false_value);
-        $arg = '[ ' . join(' | ', @values) . ' ]';
+        $arg = ''
     }
     elsif ($control->does('Form::Factory::Control::Role::PresetValue')) {
         $arg = '';
@@ -158,7 +157,12 @@ sub consume_control {
         }
 
         elsif ($argv eq '--' . $control->name) {
-            $fetch++;
+            if ($control->does('Form::Factory::Control::Role::BooleanValue')) {
+                push @values, $control->true_value;
+            }
+            else {
+                $fetch++;
+            }
         }
     }
 
@@ -176,7 +180,7 @@ sub consume_control {
 
     if ($control->does('Form::Factory::Control::Role::ScalarValue')) {
         die sprintf("the --%s option should be used only once\n", $control->name)
-            if@values > 1;
+            if @values > 1;
     
         $control->current_value($get_value->($values[0]));
     }

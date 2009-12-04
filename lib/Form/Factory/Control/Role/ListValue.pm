@@ -1,5 +1,5 @@
 package Form::Factory::Control::Role::ListValue;
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 
 use Moose::Role;
@@ -14,7 +14,7 @@ Form::Factory::Control::Role::ListValue - list-valued controls
 
 =head1 VERSION
 
-version 0.003
+version 0.004
 
 =head1 DESCRIPTION
 

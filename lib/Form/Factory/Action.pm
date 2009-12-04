@@ -1,5 +1,5 @@
 package Form::Factory::Action;
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 
 use Moose::Role;
@@ -17,12 +17,12 @@ Form::Factory::Action - Role implemented by actions
 
 =head1 VERSION
 
-version 0.003
+version 0.004
 
 =head2 SYNOPSIS
 
   package MyApp::Action::Foo;
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 
   use Form::Factory::Processor;
@@ -360,9 +360,11 @@ sub render {
 
 =head2 render_control
 
-  $action->render_control($name, \%options);
+  my $control = $action->render_control($name, \%options);
 
 Creates and renders a one time control. This is mostly useful for attaching buttons to a form. The control is not added to the list of controls on the action and will not be processed later.
+
+This method returns the control object that was just rendered.
 
 =cut
 
@@ -371,9 +373,12 @@ sub render_control {
 
     $params{results} = $self->results;
 
-    $self->form_interface->render_control(
-        $self->form_interface->new_control($name => $options), %params
-    );
+    my $interface = $self->form_interface;
+    my $control   = $interface->new_control($name => $options);
+
+    $interface->render_control($control, %params);
+
+    return $control;
 }
 
 =head2 consume
@@ -408,9 +413,11 @@ sub consume {
 
 =head2 consume_control
 
-  $action->consume_control($name, \%options, %params);
+  my $control = $action->consume_control($name, \%options, %params);
 
 Consumes the value of a one time control. This is useful for testing to see if a form submitted using a one-time control has been submitted or not.
+
+This method returns the control object that was consumed.
 
 =cut
 
@@ -419,9 +426,12 @@ sub consume_control {
 
     $params{results} = $self->results;
 
-    $self->form_interface->consume_control(
-        $self->form_interface->new_control($name => $options), %params
-    );
+    my $interface = $self->form_interface;
+    my $control   = $interface->new_control($name => $options);
+
+    $interface->consume_control($control, %params);
+
+    return $control;
 }
 
 =head2 clean

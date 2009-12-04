@@ -1,5 +1,5 @@
 package Form::Factory::Test::Interface::HTML;
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 
 use Test::Able;

@@ -1,5 +1,5 @@
 package Form::Factory::Control::Role::BooleanValue;
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 
 use Moose::Role;
@@ -10,7 +10,7 @@ Form::Factory::Control::Role::BooleanValue - boolean valued controls
 
 =head1 VERSION
 
-version 0.003
+version 0.004
 
 =head1 DESCRIPTION
 
@@ -39,7 +39,7 @@ The string value the control should have when the control is not L</is_true>.
 has false_value => (
     is        => 'ro',
     required  => 1,
-    default   => 0,
+    default   => '',
 );
 
 =head2 is_true

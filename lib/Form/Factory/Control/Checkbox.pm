@@ -1,5 +1,5 @@
 package Form::Factory::Control::Checkbox;
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 
 use Moose;
@@ -17,7 +17,7 @@ Form::Factory::Control::Checkbox - the checkbox control
 
 =head1 VERSION
 
-version 0.003
+version 0.004
 
 =head1 SYNOPSIS
 

@@ -1,13 +1,13 @@
 package Form::Factory::Control::Button;
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 
 use Moose;
 
 with qw(
     Form::Factory::Control
+    Form::Factory::Control::Role::BooleanValue
     Form::Factory::Control::Role::Labeled
-    Form::Factory::Control::Role::PresetValue
     Form::Factory::Control::Role::ScalarValue
 );
 
@@ -17,7 +17,7 @@ Form::Factory::Control::Button - The button control
 
 =head1 VERSION
 
-version 0.003
+version 0.004
 
 =head1 SYNOPSIS
 
@@ -30,19 +30,41 @@ version 0.003
 
 =head1 DESCRIPTION
 
-A control representing a submit button. This control implements L<Form::Factory::Control>, L<Form::Factory::Control::Role::Labeled>, L<Form::Factory::Control::Role::ScalarValue>.
+A control representing a submit button. This control implements L<Form::Factory::Control>, L<Form::Factory::Control::Role::BooleanValue>, L<Form::Factory::Control::Role::Labeled>, L<Form::Factory::Control::Role::ScalarValue>.
+
+=head1 ATTRIBUTES
+
+=head2 true_value
+
+See L<Form::Factory::Control::Role::BooleanValue>. By default, this value is set
+to the label. If you change this to something else, the button might not work
+correctly anymore.
+
+=cut
+
+has '+true_value' => (
+    isa       => 'Str',
+    lazy      => 1,
+    default   => sub { shift->label },
+);
 
 =head1 METHODS
 
 =head2 current_value
 
-The current value is always the same as the C<label>.
+The current value expects the L</true_value> to be passed to set the L<Form::Factory::Control::Role::BooleanValue/is_true> attribute. This method returns either the L</true_value> or L<Form::Factory::Control::Role::BooleanValue/false_value>.
 
 =cut
 
 sub current_value { 
     my $self = shift;
-    return $self->label;
+
+    if (@_) {
+        my $value = shift;
+        $self->is_true($self->true_value eq $value);
+    }
+
+    return $self->is_true ? $self->true_value : $self->false_value;
 }
 
 =head1 AUTHOR

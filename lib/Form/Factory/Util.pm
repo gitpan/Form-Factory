@@ -1,5 +1,5 @@
 package Form::Factory::Util;
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 
 use Moose;
@@ -16,7 +16,7 @@ Form::Factory::Util - Utility subroutines that don't belong anywhere else
 
 =head1 VERSION
 
-version 0.003
+version 0.004
 
 =head1 DESCRIPTION
 

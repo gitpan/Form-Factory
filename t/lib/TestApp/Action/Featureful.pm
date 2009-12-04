@@ -1,5 +1,5 @@
 package TestApp::Action::Featureful;
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 
 use Form::Factory::Processor;

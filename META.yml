@@ -13,4 +13,4 @@ requires:
   Moose: 0.93
   Sub::Exporter: 0.981
   Test::Able: 0.09
-version: 0.003
+version: 0.004

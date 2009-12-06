@@ -1,5 +1,5 @@
 package Form::Factory::Processor;
-our $VERSION = '0.004';
+our $VERSION = '0.005';
 
 
 use Moose;
@@ -25,12 +25,12 @@ Form::Factory::Processor - Moos-ish helper for action classes
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 SYNOPSIS
 
   package MyApp::Action::Foo;
-our $VERSION = '0.004';
+our $VERSION = '0.005';
 
 
   use Form::Factory::Processor;

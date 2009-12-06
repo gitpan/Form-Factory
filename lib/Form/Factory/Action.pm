@@ -1,5 +1,5 @@
 package Form::Factory::Action;
-our $VERSION = '0.004';
+our $VERSION = '0.005';
 
 
 use Moose::Role;
@@ -17,12 +17,12 @@ Form::Factory::Action - Role implemented by actions
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head2 SYNOPSIS
 
   package MyApp::Action::Foo;
-our $VERSION = '0.004';
+our $VERSION = '0.005';
 
 
   use Form::Factory::Processor;
@@ -142,8 +142,7 @@ sub _meta_features {
     my @features;
     for my $feature_name (keys %$all_features) {
         my $feature_options = $all_features->{ $feature_name };
-        my $feature_class = 'Form::Factory::Feature::' 
-                          . class_name_from_name($feature_name);
+        my $feature_class = class_name_from_name('Feature', $feature_name);
         unless (Class::MOP::load_class($feature_class)) {
             die $@ if $@;
             die "cannot load feature class $feature_class";
@@ -206,8 +205,8 @@ sub _build_controls {
 
         my $meta_features = $meta_control->features;
         for my $feature_name (keys %$meta_features) {
-            my $feature_class = 'Form::Factory::Feature::Control::' 
-                              . class_name_from_name($feature_name);
+            my $feature_class 
+                = class_name_from_name('Feature::Control', $feature_name);
             unless (Class::MOP::load_class($feature_class)) {
                 die $@ if $@;
                 die "cannot load control feature $feature_name\n";

@@ -1,5 +1,5 @@
 package Form::Factory::Interface::HTML::Widget::List;
-our $VERSION = '0.004';
+our $VERSION = '0.005';
 
 
 use Moose;
@@ -12,7 +12,7 @@ Form::Factory::Interface::HTML::Widget::List - HTML interface widget helper
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 DESCRIPTION
 

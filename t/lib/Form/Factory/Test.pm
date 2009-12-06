@@ -1,5 +1,5 @@
 package Form::Factory::Test;
-our $VERSION = '0.004';
+our $VERSION = '0.005';
 
 
 use Test::Able;
@@ -13,6 +13,7 @@ has test_packages => (
     default   => sub { [ qw(
         Form::Factory::Test::Action::Basic
         Form::Factory::Test::Action::Controls
+        Form::Factory::Test::Action::Inheritance
         Form::Factory::Test::Feature::Control::Length
         Form::Factory::Test::Interface::CLI
         Form::Factory::Test::Interface::HTML

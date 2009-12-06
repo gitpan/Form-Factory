@@ -1,5 +1,5 @@
 package Form::Factory;
-our $VERSION = '0.004';
+our $VERSION = '0.005';
 
 
 use Moose;
@@ -12,7 +12,7 @@ Form::Factory - a general-purpose form handling API
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 SYNOPSIS
 
@@ -113,7 +113,7 @@ Returns the control class for the named control.
 sub control_class {
     my $name = $_[1];
 
-    my $class_name = 'Form::Factory::Control::' . class_name_from_name($name);
+    my $class_name = class_name_from_name('Control', $name);
 
     unless (Class::MOP::load_class($class_name)) {
         warn $@ if $@;

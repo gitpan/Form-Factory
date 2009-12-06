@@ -1,5 +1,5 @@
 package Form::Factory::Util;
-our $VERSION = '0.004';
+our $VERSION = '0.005';
 
 
 use Moose;
@@ -16,7 +16,7 @@ Form::Factory::Util - Utility subroutines that don't belong anywhere else
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 DESCRIPTION
 
@@ -26,17 +26,25 @@ Utility subroutines that don't belong anywhere else.
 
 =head2 class_name_from_name
 
-  my $class_name = class_name_from_name($name);
+  my $class_name = class_name_from_name($prefix, $name);
 
-Used to build capitalized class names from all lowercase names.
+Used to build capitalized Form Factory class names from all lowercase names. 
+
+This isn't something that would go into a general string library since it understands some internals of Form Factory to do this work.
 
 =cut
 
-sub class_name_from_name($) {
-    my ($name) = @_;
+sub class_name_from_name($$) {
+    my ($prefix, $name) = @_;
 
+    # Remove anything like #Foo, which is used to differentiate between features
+    # added by different classes in get_all_features()
+    $name =~ s/\#(.*)$//;
+
+    # Turn a foo_bar_baz name into FooBarBaz
     $name =~ s/(?:[^A-Za-z]+|^)([A-Za-z])/\U$1/g;
-    return ucfirst $name;
+
+    return join('::', 'Form::Factory', $prefix, ucfirst $name);
 }
 
 =head1 AUTHOR

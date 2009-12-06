@@ -1,5 +1,5 @@
 package Form::Factory::Test::Action::Basic;
-our $VERSION = '0.004';
+our $VERSION = '0.005';
 
 
 use Test::Able;
@@ -61,9 +61,9 @@ test plan => 3, meta_class_all_features => sub {
     my $features = $self->action->meta->get_all_features;
 
     ok($features, 'has features');
-    is_deeply([ sort keys %{ $features } ], [ qw( functional ) ], 
+    is_deeply([ sort keys %{ $features } ], [ 'functional#TestApp::Action::Basic' ], 
         'has one feature');
-    is_deeply([ sort keys %{ $features->{functional} } ],
+    is_deeply([ sort keys %{ $features->{'functional#TestApp::Action::Basic'} } ],
         [ qw( checker_code cleaner_code post_processor_code pre_processor_code ) ],
         'functional feature has expected code keys');
 };

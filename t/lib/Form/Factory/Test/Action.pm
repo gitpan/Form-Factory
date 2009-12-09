@@ -1,5 +1,5 @@
 package Form::Factory::Test::Action;
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 
 use Test::Able::Role;

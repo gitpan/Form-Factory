@@ -1,12 +1,14 @@
 package Form::Factory::Feature::Control::MatchCode;
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 
 use Moose;
 
 with qw( 
     Form::Factory::Feature 
+    Form::Factory::Feature::Role::Check
     Form::Factory::Feature::Role::Control
+    Form::Factory::Feature::Role::CustomControlMessage
 );
 
 =head1 NAME
@@ -15,7 +17,7 @@ Form::Factory::Feature::Control::MatchCode - Greps the control value for correct
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 SYNOPSIS
 
@@ -64,13 +66,13 @@ sub check_control {
     die "the match_code feature only works with scalar or list valued controls";
 }
 
-=head2 check_value
+=head2 check
 
 Does the work of running the given subroutine over the control value and reports an error if the code reference runs and returns a false value.
 
 =cut
 
-sub check_value {
+sub check {
     my $self    = shift;
     my $control = $self->control;
     my $value   = $control->does('Form::Factory::Control::Role::ScalarValue')

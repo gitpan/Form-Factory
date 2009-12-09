@@ -1,5 +1,5 @@
 package Form::Factory::Test::Action::Inheritance;
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 
 use Test::Able;

@@ -1,5 +1,5 @@
 package Form::Factory::Action;
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 
 use Moose::Role;
@@ -17,12 +17,12 @@ Form::Factory::Action - Role implemented by actions
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head2 SYNOPSIS
 
   package MyApp::Action::Foo;
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 
   use Form::Factory::Processor;
@@ -453,28 +453,33 @@ This is the list of controls to clean. If not given, all features will be run. I
 
 =cut
 
-sub _run_features {
-    my $self     = shift;
-    my $method   = shift;
-    my %params   = @_;
-    my $features = $self->features;
+{
+    sub _run_features {
+        my $self     = shift;
+        my $method   = shift;
+        my %params   = @_;
+        my $features = $self->features;
 
-    # Only run the requested control-specific features
-    if (defined $params{controls}) {
-        my %names = map { $_ => 1 } @{ $params{controls} };
+        # Only run the requested control-specific features
+        if (defined $params{controls}) {
+            my %names = map { $_ => 1 } @{ $params{controls} };
 
-        for my $feature (@$features) {
-            next unless $feature->does('Form::Factory::Feature::Role::Control');
-            next unless $names{ $feature->control->name };
+            for my $feature (@$features) {
+                next unless $feature->does('Form::Factory::Feature::Role::Control');
+                next unless $feature->does(
+                    class_name_from_name('Feature::Role', $method)
+                );
+                next unless $names{ $feature->control->name };
 
-            $feature->$method;
+                $feature->$method;
+            }
         }
-    }
 
-    # Run all features now
-    else {
-        for my $feature (@$features) {
-            $feature->$method;
+        # Run all features now
+        else {
+            for my $feature (@$features) {
+                $feature->$method;
+            }
         }
     }
 }

@@ -1,12 +1,14 @@
 package Form::Factory::Feature::Control::MatchAvailableChoices;
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 
 use Moose;
 
 with qw( 
     Form::Factory::Feature 
+    Form::Factory::Feature::Role::Check
     Form::Factory::Feature::Role::Control
+    Form::Factory::Feature::Role::CustomControlMessage
 );
 
 =head1 NAME
@@ -15,7 +17,7 @@ Form::Factory::Feature::Control::MatchAvailableChoices - Check for choice availa
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 SYNOPSIS
 
@@ -55,13 +57,13 @@ sub check_control {
     die "the match_available_feature does not know hwo to check the value of $control";
 }
 
-=head2 check_value
+=head2 check
 
 Verifies that the value or values set match one or more of the available values.
 
 =cut
 
-sub check_value {
+sub check {
     my $self    = shift;
     my $control = $self->control;
 

@@ -1,10 +1,8 @@
 package Form::Factory::Feature::Role::Control;
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 
 use Moose::Role;
-
-use Scalar::Util qw( blessed );
 
 requires qw( check_control );
 
@@ -14,17 +12,22 @@ Form::Factory::Feature::Role::Control - Form features tied to particular control
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 SYNOPSIS
 
   package Form::Factory::Feature::Control::Color;
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 
   use Moose;
 
-  with qw( Form::Factory::Feature Form::Factory::Feature::Role::Control );
+  with qw( 
+      Form::Factory::Feature 
+      Form::Factory::Feature::Role::Check
+      Form::Factory::Feature::Role::Control 
+      Form::Factory::Feature::Role::CustomControlMessage
+  );
 
   has recognized_colors => (
       is        => 'ro',
@@ -40,7 +43,7 @@ our $VERSION = '0.005';
           unless $control->does('Form::Factory::Control::Role::ScalarValue');
   }
 
-  sub check_value {
+  sub check {
       my $self  = shift;
       my $value = $self->control->current_value;
 
@@ -51,7 +54,7 @@ our $VERSION = '0.005';
 And then used in an action via:
 
   package MyApp::Action::Foo;
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 
   use Form::Factory::Processor;
@@ -94,109 +97,6 @@ has control => (
         $set->($value);
     },
 );
-
-=head1 METHODS
-
-=head2 clean
-
-Checks to see if a C<clean_value> method is defined and calls it if it is.
-
-=cut
-
-sub clean {
-    my $self = shift;
-    $self->clean_value(@_) if $self->can('clean_value');
-}
-
-=head2 check
-
-Checks to see if a C<check_value> method is defined and calls it if it is.
-
-=cut
-
-sub check {
-    my $self = shift;;
-    $self->check_value(@_) if $self->can('check_value');
-}
-
-=head2 pre_process
-
-Checks to see if a C<pre_process_value> method is deifned and calls it if it is.
-
-=cut
-
-sub pre_process {
-    my $self = shift;
-    $self->pre_process_value(@_) if $self->can('pre_process_value');
-}
-
-=head2 post_process
-
-Checks to see if a C<post_process_value> method is deifned an calls it if it is.
-
-=cut
-
-sub post_process {
-    my $self = shift;
-    $self->post_process_value(@_) if $self->can('post_process_value');
-}
-
-=head2 format_message
-
-  my $formatted_message = $feature->format_message($unformatted_message);
-
-Given a message containing a single C<%s> placeholder, it fills that placeholder with the control's label. If the control does not implement L<Form::Factory::Control::Role::Labeled>, the control's name is used instead.
-
-=cut
-
-sub format_message {
-    my $self    = shift;
-    my $message = $self->message || shift;
-    my $control = $self->control;
-
-    my $control_label 
-        = $control->does('Form::Factory::Control::Role::Labeled') ? $control->label
-        :                                                         $control->name
-        ;
-
-    sprintf $message, $control_label;
-}
-
-=head2 control_info
-
-Reports an informational message automatically filtered through L</format_message>.
-
-=cut
-
-sub control_info {
-    my $self    = shift;
-    my $message = $self->format_message(shift);
-    $self->result->field_info($self->control->name, $message);
-}
-
-=head2 control_warning
-
-Reports a warning automatically filtered through L</format_message>.
-
-=cut
-
-sub control_warning {
-    my $self = shift;
-    my $message = $self->format_message(shift);
-    $self->result->field_warning($self->control->name, $message);
-}
-
-=head2 control_error
-
-Reports an error automatically filtered through L</format_error>.
-
-=cut
-
-sub control_error {
-    my $self = shift;
-    my $message = $self->format_message(shift);
-    $self->result->field_error($self->control->name, $message);
-}
 
 =head1 AUTHOR
 

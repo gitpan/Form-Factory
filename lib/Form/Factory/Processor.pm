@@ -1,5 +1,5 @@
 package Form::Factory::Processor;
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 
 use Moose;
@@ -9,6 +9,7 @@ use Form::Factory::Action;
 use Form::Factory::Action::Meta::Class;
 use Form::Factory::Action::Meta::Attribute::Control;
 use Form::Factory::Processor::DeferredValue;
+use Form::Factory::Util qw( class_name_from_name );
 
 Moose::Exporter->setup_import_methods(
     as_is     => [ qw( deferred_value ) ],
@@ -25,12 +26,12 @@ Form::Factory::Processor - Moos-ish helper for action classes
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 SYNOPSIS
 
   package MyApp::Action::Foo;
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 
   use Form::Factory::Processor;
@@ -168,6 +169,19 @@ sub has_control {
     }
 
     unshift @{ $args->{traits} }, 'Form::Control';
+
+    for my $name (keys %{ $args->{features} }) {
+        my $feature_class = class_name_from_name('Feature::Control', $name);
+        unless (Class::MOP::load_class($feature_class)) {
+            die $@ if $@;
+            die "cannot load $feature_class";
+        }
+        next unless $feature_class->does('Form::Factory::Feature::Role::BuildAttribute');
+
+        $feature_class->build_attribute(
+            $args->{features}{$name}, $meta, $name, $args
+        );
+    }
 
     $meta->add_attribute( $name => $args );
 }

@@ -1,5 +1,5 @@
 package Form::Factory::Message;
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 
 use Moose;
@@ -14,7 +14,7 @@ Form::Factory::Message - Handy class for encapsulating messages
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 SYNOPSIS
 

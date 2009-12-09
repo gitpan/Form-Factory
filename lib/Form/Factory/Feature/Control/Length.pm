@@ -1,12 +1,14 @@
 package Form::Factory::Feature::Control::Length;
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 
 use Moose;
 
 with qw( 
     Form::Factory::Feature 
+    Form::Factory::Feature::Role::Check
     Form::Factory::Feature::Role::Control
+    Form::Factory::Feature::Role::CustomControlMessage
 );
 
 =head1 NAME
@@ -15,7 +17,7 @@ Form::Factory::Feature::Control::Length - A control feature for checking length
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 SYNOPSIS
 
@@ -87,13 +89,13 @@ sub check_control {
     die "the length feature only works with scalar values\n";
 }
 
-=head2 check_value
+=head2 check
 
 Verifies that the value of the control is not too short or too long.
 
 =cut
 
-sub check_value {
+sub check {
     my $self  = shift;
     my $value = $self->control->current_value;
 
@@ -103,13 +105,17 @@ sub check_value {
         $self->control_error(
             "the %s must be at least @{[$self->minimum]} characters long"
         );
+        $self->result->is_valid(0);
     }
 
     if ($self->has_maximum and length($value) > $self->maximum) {
         $self->control_error(
             "the %s must be no longer than @{[$self->maximum]} characters"
         );
+        $self->result->is_valid(0);
     }
+
+    $self->result->is_valid(1) unless $self->result->is_validated;
 }
 
 =head1 AUTHOR

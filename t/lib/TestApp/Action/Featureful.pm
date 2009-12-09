@@ -1,8 +1,16 @@
 package TestApp::Action::Featureful;
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 
 use Form::Factory::Processor;
+
+has_control fill_on_assignment => (
+    is        => 'rw',
+    control   => 'text',
+    features  => {
+        fill_on_assignment => 1,
+    },
+);
 
 has_control length => (
     control   => 'text',

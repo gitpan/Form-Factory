@@ -30,6 +30,7 @@ lib/Form/Factory/Control/SelectOne.pm
 lib/Form/Factory/Control/Text.pm
 lib/Form/Factory/Control/Value.pm
 lib/Form/Factory/Feature.pm
+lib/Form/Factory/Feature/Control/FillOnAssignment.pm
 lib/Form/Factory/Feature/Control/Length.pm
 lib/Form/Factory/Feature/Control/MatchAvailableChoices.pm
 lib/Form/Factory/Feature/Control/MatchCode.pm
@@ -37,7 +38,14 @@ lib/Form/Factory/Feature/Control/MatchRegex.pm
 lib/Form/Factory/Feature/Control/Required.pm
 lib/Form/Factory/Feature/Control/Trim.pm
 lib/Form/Factory/Feature/Functional.pm
+lib/Form/Factory/Feature/Role/BuildAttribute.pm
+lib/Form/Factory/Feature/Role/Check.pm
+lib/Form/Factory/Feature/Role/Clean.pm
 lib/Form/Factory/Feature/Role/Control.pm
+lib/Form/Factory/Feature/Role/CustomControlMessage.pm
+lib/Form/Factory/Feature/Role/CustomMessage.pm
+lib/Form/Factory/Feature/Role/PostProcess.pm
+lib/Form/Factory/Feature/Role/PreProcess.pm
 lib/Form/Factory/Interface.pm
 lib/Form/Factory/Interface/CLI.pm
 lib/Form/Factory/Interface/HTML.pm
@@ -66,7 +74,10 @@ t/lib/Form/Factory/Test/Action/Basic.pm
 t/lib/Form/Factory/Test/Action/Controls.pm
 t/lib/Form/Factory/Test/Action/Inheritance.pm
 t/lib/Form/Factory/Test/Feature.pm
+t/lib/Form/Factory/Test/Feature/Control/FillOnAssignment.pm
 t/lib/Form/Factory/Test/Feature/Control/Length.pm
+t/lib/Form/Factory/Test/Feature/Control/Required.pm
+t/lib/Form/Factory/Test/Feature/Control/Trim.pm
 t/lib/Form/Factory/Test/Interface.pm
 t/lib/Form/Factory/Test/Interface/CLI.pm
 t/lib/Form/Factory/Test/Interface/HTML.pm

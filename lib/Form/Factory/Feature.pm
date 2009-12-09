@@ -1,12 +1,10 @@
 package Form::Factory::Feature;
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 
 use Moose::Role;
 
 use Scalar::Util qw( blessed );
-
-requires qw( clean check pre_process post_process );
 
 =head1 NAME
 
@@ -14,41 +12,17 @@ Form::Factory::Feature - Interface for objects that modify how actions work
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 SYNOPSIS
 
   package MyApp::Feature::Foo;
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 
   use Moose;
 
   with qw( Form::Factory::Feature );
-
-  sub clean {
-      my $self = shift;
-
-      # clean the input...
-  }
-
-  sub check {
-      my $self = shift;
-
-      # check the input...
-  }
-
-  sub pre_process {
-      my $self = shift;
-
-      # run before the process...
-  }
-
-  sub post_process {
-      my $self = shift;
-
-      # run after the process...
-  }
 
 =head1 DESCRIPTION
 
@@ -94,20 +68,6 @@ has action => (
     weak_ref  => 1,
 );
 
-=head2 message
-
-This is a custom error message for failures. This message is used instead of the one the feature specifies when L</feature_info>, L</feature_warning>, and L</feature_error> are called.
-
-This is inadequate. It should be fixed in the future.
-
-=cut
-
-has message => (
-    is        => 'ro',
-    isa       => 'Str',
-    predicate => 'has_message',
-);
-
 =head2 result
 
 This is the L<Form::Factory::Result::Single> recording the success or failure of the parts of this feature.
@@ -118,52 +78,9 @@ has result => (
     is        => 'ro',
     isa       => 'Form::Factory::Result::Single',
     required  => 1,
+    lazy      => 1,
     default   => sub { Form::Factory::Result::Single->new },
 );
-
-=head1 METHODS
-
-=head2 feature_info
-
-  $feature->feature_info($message);
-
-Record an info feature message.
-
-=cut
-
-sub feature_info {
-    my $self    = shift;
-    my $message = $self->message || shift;
-    $self->result->info($message);
-}
-
-=head2 feature_warning
-
-  $feature->feature_warning($message);
-
-Record a warning feature message.
-
-=cut
-
-sub feature_warning {
-    my $self    = shift;
-    my $message = $self->message || shift;
-    $self->result->warning($message);
-}
-
-=head2 feature_error
-
-  $feature->feature_error($message);
-
-Record an error feature message.
-
-=cut
-
-sub feature_error {
-    my $self    = shift;
-    my $message = $self->message || shift;
-    $self->result->error($message);
-}
 
 =head1 AUTHOR
 

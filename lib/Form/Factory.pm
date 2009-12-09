@@ -1,5 +1,5 @@
 package Form::Factory;
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 
 use Moose;
@@ -12,7 +12,7 @@ Form::Factory - a general-purpose form handling API
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 SYNOPSIS
 
@@ -131,7 +131,7 @@ This is not definite, but some things I know as of right now I'm not happy with:
 
 =item *
 
-There are lots of tweaks coming to controls, especially L<Form::Factory::Control::Button>. I'm not very happy with how this is done right now, so something will change.
+There are lots of tweaks coming to controls.
 
 =item *
 

@@ -1,10 +1,16 @@
 package Form::Factory::Feature::Functional;
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 
 use Moose;
 
-with qw( Form::Factory::Feature );
+with qw( 
+    Form::Factory::Feature 
+    Form::Factory::Feature::Role::Clean
+    Form::Factory::Feature::Role::Check
+    Form::Factory::Feature::Role::PreProcess
+    Form::Factory::Feature::Role::PostProcess
+);
 
 =head1 NAME
 
@@ -12,12 +18,12 @@ Form::Factory::Feature::Functional - A generic feature for actions
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 SYNOPSIS
 
   package MyApp::Action::Foo;
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 
   use Form::Factory::Processor;

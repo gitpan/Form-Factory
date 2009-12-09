@@ -1,11 +1,12 @@
 package Form::Factory::Feature::Control::Trim;
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 
 use Moose;
 
 with qw( 
     Form::Factory::Feature 
+    Form::Factory::Feature::Role::Clean
     Form::Factory::Feature::Role::Control
 );
 
@@ -15,7 +16,7 @@ Form::Factory::Feature::Control::Trim - Trims whitespace from a control value
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 SYNOPSIS
 
@@ -46,13 +47,13 @@ sub check_control {
     die "the trim feature only works on scalar values, not $control";
 }
 
-=head2 clean_value
+=head2 clean
 
 Strips whitespace from the start and end of the control value.
 
 =cut
 
-sub clean_value {
+sub clean {
     my $self    = shift;
     my $control = $self->control;
 

@@ -1,12 +1,14 @@
 package Form::Factory::Feature::Control::Required;
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 
 use Moose;
 
 with qw( 
     Form::Factory::Feature 
+    Form::Factory::Feature::Role::Check
     Form::Factory::Feature::Role::Control
+    Form::Factory::Feature::Role::CustomControlMessage
 );
 
 =head1 NAME
@@ -15,7 +17,7 @@ Form::Factory::Feature::Control::Required - Makes sure a value is set on a contr
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 SYNOPSIS
 
@@ -47,13 +49,13 @@ sub check_control {
     die "the required feature does not know how to check the value of $control";
 }
 
-=head2 check_value
+=head2 check
 
 Reports an error if a scalar value does not have a length greater than 0. Reports an error if a list value has 0 items in the list.
 
 =cut
 
-sub check_value {
+sub check {
     my $self    = shift;
     my $control = $self->control;
 
@@ -62,6 +64,10 @@ sub check_value {
         my $value = $control->current_value;
         unless (length($value) > 0) {
             $self->control_error('the %s is required');
+            $self->result->is_valid(0);
+        }
+        else {
+            $self->result->is_valid(1);
         }
     }
 
@@ -70,6 +76,10 @@ sub check_value {
         my $values = $control->current_values;
         unless (@$values > 0) {
             $self->control_error('at least one value for %s is required');
+            $self->result->is_valid(0);
+        }
+        else {
+            $self->result->is_valid(1);
         }
     }
 }

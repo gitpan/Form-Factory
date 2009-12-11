@@ -1,5 +1,5 @@
 package Form::Factory::Test::Interface;
-our $VERSION = '0.006';
+our $VERSION = '0.007';
 
 
 use Test::Able::Role;

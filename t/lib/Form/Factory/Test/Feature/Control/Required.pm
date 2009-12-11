@@ -1,5 +1,5 @@
 package Form::Factory::Test::Feature::Control::Required;
-our $VERSION = '0.006';
+our $VERSION = '0.007';
 
 
 use Test::Able;

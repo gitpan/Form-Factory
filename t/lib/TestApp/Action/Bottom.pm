@@ -1,5 +1,5 @@
 package TestApp::Action::Bottom;
-our $VERSION = '0.006';
+our $VERSION = '0.007';
 
 
 use Form::Factory::Processor;

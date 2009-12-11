@@ -70,6 +70,7 @@ lib/Form/Factory/Stasher/Memory.pm
 lib/Form/Factory/Util.pm
 t/lib/Form/Factory/Test.pm
 t/lib/Form/Factory/Test/Action.pm
+t/lib/Form/Factory/Test/Action/AllControls.pm
 t/lib/Form/Factory/Test/Action/Basic.pm
 t/lib/Form/Factory/Test/Action/Controls.pm
 t/lib/Form/Factory/Test/Action/Inheritance.pm

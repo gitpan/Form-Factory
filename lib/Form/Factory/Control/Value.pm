@@ -1,5 +1,5 @@
 package Form::Factory::Control::Value;
-our $VERSION = '0.006';
+our $VERSION = '0.007';
 
 
 use Moose;
@@ -18,7 +18,7 @@ Form::Factory::Control::Value - A read-only value control
 
 =head1 VERSION
 
-version 0.006
+version 0.007
 
 =head1 SYNOPSIS
 

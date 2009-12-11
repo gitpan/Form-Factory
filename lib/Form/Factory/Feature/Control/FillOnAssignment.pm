@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Control::FillOnAssignment;
-our $VERSION = '0.006';
+our $VERSION = '0.007';
 
 
 use Moose;
@@ -16,12 +16,12 @@ Form::Factory::Feature::Control::FillOnAssignment - Control gets the value of th
 
 =head1 VERSION
 
-version 0.006
+version 0.007
 
 =head1 SYNOPSIS
 
   package MyApp::Action::Thing;
-our $VERSION = '0.006';
+our $VERSION = '0.007';
 
 
   use Form::Factory::Processor;
@@ -34,7 +34,7 @@ our $VERSION = '0.006';
   );
 
   package Somewhere::Else;
-our $VERSION = '0.006';
+our $VERSION = '0.007';
 
 
 

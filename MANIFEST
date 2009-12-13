@@ -67,13 +67,13 @@ lib/Form/Factory/Result/Gathered.pm
 lib/Form/Factory/Result/Single.pm
 lib/Form/Factory/Stasher.pm
 lib/Form/Factory/Stasher/Memory.pm
-lib/Form/Factory/Util.pm
 t/lib/Form/Factory/Test.pm
 t/lib/Form/Factory/Test/Action.pm
 t/lib/Form/Factory/Test/Action/AllControls.pm
 t/lib/Form/Factory/Test/Action/Basic.pm
 t/lib/Form/Factory/Test/Action/Controls.pm
 t/lib/Form/Factory/Test/Action/Inheritance.pm
+t/lib/Form/Factory/Test/CustomClassNames.pm
 t/lib/Form/Factory/Test/Feature.pm
 t/lib/Form/Factory/Test/Feature/Control/FillOnAssignment.pm
 t/lib/Form/Factory/Test/Feature/Control/Length.pm
@@ -88,6 +88,8 @@ t/lib/TestApp/Action/EveryControl.pm
 t/lib/TestApp/Action/Featureful.pm
 t/lib/TestApp/Action/Middle.pm
 t/lib/TestApp/Action/Top.pm
-t/release-pod-coverage.t
-t/release-pod-syntax.t
+t/lib/TestApp/Control/Null.pm
+t/lib/TestApp/Feature/Control/Null.pm
+t/lib/TestApp/Feature/Null.pm
+t/lib/TestApp/Interface/Null.pm
 t/tests.t

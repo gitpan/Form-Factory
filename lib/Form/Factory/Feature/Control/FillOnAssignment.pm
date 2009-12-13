@@ -1,6 +1,5 @@
 package Form::Factory::Feature::Control::FillOnAssignment;
-our $VERSION = '0.007';
-
+our $VERSION = '0.008';
 
 use Moose;
 
@@ -16,14 +15,11 @@ Form::Factory::Feature::Control::FillOnAssignment - Control gets the value of th
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 SYNOPSIS
 
   package MyApp::Action::Thing;
-our $VERSION = '0.007';
-
-
   use Form::Factory::Processor;
 
   has_control title => (
@@ -34,9 +30,6 @@ our $VERSION = '0.007';
   );
 
   package Somewhere::Else;
-our $VERSION = '0.007';
-
-
 
   my $interface = Form::Factory->new_interface('HTML');
   my $action = $itnerface->new_action('MyApp::Action::Thing' => {

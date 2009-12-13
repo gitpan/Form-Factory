@@ -2,7 +2,7 @@
 abstract: 'A general-purpose form handling API'
 author:
   - 'Andrew Sterling Hanenkamp <hanenkamp@cpan.org>'
-generated_by: 'Dist::Zilla version 1.093290'
+generated_by: 'Dist::Zilla::Plugin::MetaYAML version 1.091610'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -11,6 +11,5 @@ name: Form-Factory
 requires:
   List::MoreUtils: 0.22
   Moose: 0.93
-  Sub::Exporter: 0.981
   Test::Able: 0.09
-version: 0.007
+version: 0.008

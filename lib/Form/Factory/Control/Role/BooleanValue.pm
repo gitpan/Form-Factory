@@ -1,6 +1,5 @@
 package Form::Factory::Control::Role::BooleanValue;
-our $VERSION = '0.007';
-
+our $VERSION = '0.008';
 
 use Moose::Role;
 
@@ -10,7 +9,7 @@ Form::Factory::Control::Role::BooleanValue - boolean valued controls
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 DESCRIPTION
 

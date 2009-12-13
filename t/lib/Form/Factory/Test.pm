@@ -1,6 +1,5 @@
 package Form::Factory::Test;
-our $VERSION = '0.007';
-
+our $VERSION = '0.008';
 
 use Test::Able;
 
@@ -15,6 +14,7 @@ has test_packages => (
         Form::Factory::Test::Action::Basic
         Form::Factory::Test::Action::Controls
         Form::Factory::Test::Action::Inheritance
+        Form::Factory::Test::CustomClassNames
         Form::Factory::Test::Feature::Control::FillOnAssignment
         Form::Factory::Test::Feature::Control::Length
         Form::Factory::Test::Feature::Control::Required

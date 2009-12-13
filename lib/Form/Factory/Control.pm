@@ -1,6 +1,5 @@
 package Form::Factory::Control;
-our $VERSION = '0.007';
-
+our $VERSION = '0.008';
 
 use Moose::Role;
 
@@ -15,7 +14,47 @@ Form::Factory::Control - high-level API for working with form controls
 
 =head1 VERSION
 
-version 0.007
+version 0.008
+
+=head1 SYNOPSIS
+
+  package MyApp::Control::Slider;
+  use Moose;
+
+  with qw(
+      Form::Feature::Control
+      Form::Feature::Control::Role::ScalarValue
+  );
+
+  has minimum_value => (
+      is        => 'rw',
+      isa       => 'Num',
+      required  => 1,
+      default   => 0,
+  );
+
+  has maximum_value => (
+      is        => 'rw',
+      isa       => 'Num',
+      required  => 1,
+      default   => 100,
+  );
+
+  has value => (
+      is        => 'rw',
+      isa       => 'Num',
+      required  => 1,
+      default   => 50,
+  );
+
+  sub current_value {
+      my $self = shift
+      if (@_) { $self->value(shift) }
+      return $self->value;
+  }
+
+  package Form::Factory::Control::Custom::Slider;
+  sub register_implementation { 'MyApp::Control::Slider' }
 
 =head1 DESCRIPTION
 

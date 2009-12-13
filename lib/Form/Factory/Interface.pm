@@ -1,6 +1,5 @@
 package Form::Factory::Interface;
-our $VERSION = '0.007';
-
+our $VERSION = '0.008';
 
 use Moose::Role;
 
@@ -14,14 +13,11 @@ Form::Factory::Interface - Role for form interface implementations
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 SYNOPSIS
 
-  package Form::Factory::Interface::MyFactory;
-our $VERSION = '0.007';
-
-
+  package MyApp::Interface::MyUI;
   use Moose;
 
   with qw( Form::Factory::Interface );
@@ -37,6 +33,9 @@ our $VERSION = '0.007';
 
       # Consume values from user to fill $control
   }
+
+  package Form::Factory::Interface::Custom::MyUI;
+  sub register_implementation { 'MyApp::Interface::MyUI' }
 
 =head1 DESCRIPTION
 

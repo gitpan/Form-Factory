@@ -1,7 +1,15 @@
 package Form::Factory::Control::Role::BooleanValue;
-our $VERSION = '0.008';
+our $VERSION = '0.009';
+
 
 use Moose::Role;
+
+with qw( Form::Factory::Control::Role::Value );
+
+excludes qw(
+    Form::Factory::Control::Role::ListValue
+    Form::Factory::Control::Role::ScalarValue
+);
 
 =head1 NAME
 
@@ -9,7 +17,7 @@ Form::Factory::Control::Role::BooleanValue - boolean valued controls
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 DESCRIPTION
 
@@ -41,18 +49,37 @@ has false_value => (
     default   => '',
 );
 
+=head1 METHODS
+
 =head2 is_true
 
-Whether or not the control is currently set.
+Returns a true value when the C<current_value> is set to L</true_value> or a false value when the C<current_value> is set to L</false_value>.
+
+This method returns C<undef> if it is neither true nor false.
+
+If passed a value:
+
+  $self->is_true(1);
+
+This will set the C<value> attribute. If a true value is given, the C<value> will be set to L</true_value>. Otherwise, it will cause C<value> to take on the contents of L</false_value>.
 
 =cut
 
-has is_true => (
-    is        => 'rw',
-    isa       => 'Bool',
-    required  => 1,
-    default   => 0,
-);
+sub is_true {
+    my $self = shift;
+
+    if (@_) {
+        my $is_true = shift;
+        $self->value($is_true ? $self->true_value : $self->false_value);
+    }
+
+    # blow off these warnings rather than test for them
+    no warnings 'uninitialized'; 
+
+    return 1  if $self->current_value eq $self->true_value;
+    return '' if $self->current_value eq $self->false_value;
+    return scalar undef;
+}
 
 =head1 AUTHOR
 

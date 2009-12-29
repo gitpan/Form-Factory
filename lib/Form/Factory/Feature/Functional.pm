@@ -1,5 +1,6 @@
 package Form::Factory::Feature::Functional;
-our $VERSION = '0.008';
+our $VERSION = '0.009';
+
 
 use Moose;
 
@@ -17,11 +18,14 @@ Form::Factory::Feature::Functional - A generic feature for actions
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 
   package MyApp::Action::Foo;
+our $VERSION = '0.009';
+
+
   use Form::Factory::Processor;
 
   has_cleaner squeaky => sub {

@@ -1,5 +1,6 @@
 package Form::Factory::Feature::Role::BuildAttribute;
-our $VERSION = '0.008';
+our $VERSION = '0.009';
+
 
 use Moose::Role;
 
@@ -11,11 +12,14 @@ Form::Factory::Feature::Role::BuildAttribute - control features that modify the 
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 
   package MyApp::Feature::AddPredicate;
+our $VERSION = '0.009';
+
+
   use Moose;
 
   with qw(
@@ -28,6 +32,12 @@ version 0.008
       my ($class, $options, $meta, $name, $attr) = @_;
       $attr->{predicate} = 'has_' . $name;
   }
+
+  package Form::Factory::Feature::Control::Custom::AddPredicate;
+our $VERSION = '0.009';
+
+
+  sub register_implementation { 'MyApp::Feature::FillFromRecord' }
 
 =head1 DESCRIPTION
 

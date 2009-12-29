@@ -1,5 +1,6 @@
 package Form::Factory::Feature::Control::FillOnAssignment;
-our $VERSION = '0.008';
+our $VERSION = '0.009';
+
 
 use Moose;
 
@@ -15,11 +16,14 @@ Form::Factory::Feature::Control::FillOnAssignment - Control gets the value of th
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 
   package MyApp::Action::Thing;
+our $VERSION = '0.009';
+
+
   use Form::Factory::Processor;
 
   has_control title => (
@@ -30,6 +34,9 @@ version 0.008
   );
 
   package Somewhere::Else;
+our $VERSION = '0.009';
+
+
 
   my $interface = Form::Factory->new_interface('HTML');
   my $action = $itnerface->new_action('MyApp::Action::Thing' => {
@@ -74,7 +81,7 @@ sub build_attribute {
 
     unless ($options->{no_warn}) {
         warn "the $name attribute is read-only, but the fill_on_assignment feature is enabled for it, are you sure this is correct?"
-            if $attr->{is} eq 'ro';
+            if $attr->{is} eq 'ro' or $attr->{is} eq 'bare';
     }
 
     $attr->{trigger} = sub {

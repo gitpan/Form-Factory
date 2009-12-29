@@ -1,5 +1,6 @@
 package Form::Factory::Control::Text;
-our $VERSION = '0.008';
+our $VERSION = '0.009';
+
 
 use Moose;
 
@@ -15,7 +16,7 @@ Form::Factory::Control::Text - A single line text field
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 
@@ -35,17 +36,11 @@ This control implements L<Form::Factory::Control>, L<Form::Factory::Control::Rol
 
 =head1 ATTRIBUTES
 
-=head2 value
-
-The current value of the control.
-
 =cut
 
 
-has value => (
-    is        => 'rw',
+has '+value' => (
     isa       => 'Str',
-    predicate => 'has_value',
 );
 
 =head2 default_value

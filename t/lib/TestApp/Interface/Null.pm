@@ -1,5 +1,6 @@
 package TestApp::Interface::Null;
-our $VERSION = '0.008';
+our $VERSION = '0.009';
+
 
 use Moose;
 
@@ -10,7 +11,8 @@ sub render_control {}
 sub consume_control {}
 
 package Form::Factory::Interface::Custom::Null;
-our $VERSION = '0.008';
+our $VERSION = '0.009';
+
 
 sub register_implementation { 'TestApp::Interface::Null' }
 

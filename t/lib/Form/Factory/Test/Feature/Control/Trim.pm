@@ -1,5 +1,6 @@
 package Form::Factory::Test::Feature::Control::Trim;
-our $VERSION = '0.008';
+our $VERSION = '0.009';
+
 
 use Test::Able;
 

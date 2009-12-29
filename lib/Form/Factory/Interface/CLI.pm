@@ -1,5 +1,6 @@
 package Form::Factory::Interface::CLI;
-our $VERSION = '0.008';
+our $VERSION = '0.009';
+
 
 use Moose;
 
@@ -11,7 +12,7 @@ Form::Factory::Interface::CLI - Command-line interface builder for form factory
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 
@@ -144,8 +145,7 @@ sub consume_control {
     my ($self, $control, %options) = @_;
 
     die "CLI interface does not know how to consume values for $control"
-        unless $control->does('Form::Factory::Control::Role::ScalarValue')
-            or $control->does('Form::Factory::Control::Role::ListValue');
+        unless $control->does('Form::Factory::Control::Role::Value');
 
     my @argv = @{ $self->get_args->($self) };
     my ($fetch, @values);
@@ -177,17 +177,17 @@ sub consume_control {
         }
     };
 
-    if ($control->does('Form::Factory::Control::Role::ScalarValue')) {
-        die sprintf("the --%s option should be used only once\n", $control->name)
-            if @values > 1;
-    
-        $control->current_value($get_value->($values[0]));
-    }
-
-    else {
+    if ($control->does('Form::Factory::Control::Role::ListValue')) {
         my @result;
         push @result, $get_value->($_) for @values;
         $control->current_values(\@result);
+    }
+
+    else {
+        die sprintf("the --%s option should be used only once\n", $control->name)
+            if @values > 1;
+     
+        $control->current_value($get_value->($values[0]));
     }
 }
 

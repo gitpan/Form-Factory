@@ -1,11 +1,15 @@
 package Form::Factory::Control::Role::ScalarValue;
-our $VERSION = '0.008';
+our $VERSION = '0.009';
+
 
 use Moose::Role;
 
-requires qw( current_value );
+with qw( Form::Factory::Control::Role::Value );
 
-excludes qw( FormFactory::Control::Role::ListValue );
+excludes qw( 
+    Form::Factory::Control::Role::BooleanValue
+    Form::Factory::Control::Role::ListValue 
+);
 
 =head1 NAME
 
@@ -13,7 +17,7 @@ Form::Factory::Control::Role::ScalarValue - scalar valued controls
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 DESCRIPTION
 
@@ -28,19 +32,6 @@ Scalar valued controls are "Str" by default.
 =cut
 
 use constant default_isa => 'Str';
-
-=head2 set_attribute_value
-
-  $control->set_attribute_value($action, $attribute);
-
-Sets the action attribute to the current value.
-
-=cut
-
-sub set_attribute_value {
-    my ($self, $action, $attribute) = @_;
-    $attribute->set_value($action, $self->current_value);
-}
 
 =head1 AUTHOR
 

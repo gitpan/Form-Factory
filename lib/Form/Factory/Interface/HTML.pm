@@ -1,5 +1,6 @@
 package Form::Factory::Interface::HTML;
-our $VERSION = '0.008';
+our $VERSION = '0.009';
+
 
 use Moose;
 
@@ -22,7 +23,7 @@ Form::Factory::Interface::HTML - Simple HTML form interface
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 
@@ -204,7 +205,7 @@ sub new_widget_for_checkbox {
 
     return _wrapper($control->name, 'checkbox', 
         _input($control->name, 'checkbox', 'checkbox', $control->true_value, 
-            checked => $control->is_true),
+            checked => $control->is_true || ''),
         _label($control->name, 'checkbox', $control->label),
         _alerts($control->name, 'checkbox', @alerts),
     );
@@ -369,8 +370,7 @@ sub consume_control {
     die "no request option passed" unless defined $options{request};
 
     die "HTML interface does not know how to consume values for $control"
-        unless $control->does('Form::Factory::Control::Role::ScalarValue')
-            or $control->does('Form::Factory::Control::Role::ListValue');
+        unless $control->does('Form::Factory::Control::Role::Value');
 
     my $widget = $self->new_widget_for_control($control);
     return unless defined $widget;
@@ -379,12 +379,7 @@ sub consume_control {
 
     return unless defined $params->{ $control->name };
 
-    if ($control->does('Form::Factory::Control::Role::ScalarValue')) {
-        $control->current_value( $params->{ $control->name } );
-    }
-    else {
-        $control->current_values( $params->{ $control->name } );
-    }
+    $control->current_value( $params->{ $control->name } );
 }
 
 =head1 CAVEATS

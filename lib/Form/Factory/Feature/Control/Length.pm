@@ -1,5 +1,6 @@
 package Form::Factory::Feature::Control::Length;
-our $VERSION = '0.008';
+our $VERSION = '0.009';
+
 
 use Moose;
 
@@ -16,7 +17,7 @@ Form::Factory::Feature::Control::Length - A control feature for checking length
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 

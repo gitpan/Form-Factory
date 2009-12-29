@@ -1,5 +1,6 @@
 package Form::Factory::Interface::HTML::Widget::Textarea;
-our $VERSION = '0.008';
+our $VERSION = '0.009';
+
 
 use Moose;
 
@@ -11,7 +12,7 @@ Form::Factory::Interface::HTML::Widget::Textarea - HTML interface widget helper
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 DESCRIPTION
 

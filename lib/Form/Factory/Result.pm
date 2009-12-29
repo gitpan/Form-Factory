@@ -1,5 +1,6 @@
 package Form::Factory::Result;
-our $VERSION = '0.008';
+our $VERSION = '0.009';
+
 
 use Moose::Role;
 
@@ -11,7 +12,7 @@ Form::Factory::Result - Interface for the result classes
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 

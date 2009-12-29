@@ -1,5 +1,6 @@
 package Form::Factory::Feature::Role::Clean;
-our $VERSION = '0.008';
+our $VERSION = '0.009';
+
 
 use Moose::Role;
 
@@ -11,11 +12,14 @@ Form::Factory::Feature::Role::Clean - features that clean up control values
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 
   package MyApp::Feature::Foo;
+our $VERSION = '0.009';
+
+
   use Moose;
 
   with qw(
@@ -29,6 +33,12 @@ version 0.008
       # Clean up the value, replace it with Foo
       $self->control->{something}->current_value('Foo');
   }
+
+  package Form::Factory::Feature::Foo;
+our $VERSION = '0.009';
+
+
+  sub register_implementation { 'MyApp::Feature::Foo' }
 
 =head1 DESCRIPTION
 

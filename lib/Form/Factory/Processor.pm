@@ -1,5 +1,6 @@
 package Form::Factory::Processor;
-our $VERSION = '0.008';
+our $VERSION = '0.009';
+
 
 use Moose;
 use Moose::Exporter;
@@ -24,11 +25,14 @@ Form::Factory::Processor - Moos-ish helper for action classes
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 
   package MyApp::Action::Foo;
+our $VERSION = '0.009';
+
+
   use Form::Factory::Processor;
 
   has_control name => (
@@ -165,12 +169,12 @@ sub has_control {
 
     unshift @{ $args->{traits} }, 'Form::Control';
 
-    for my $name (keys %{ $args->{features} }) {
-        my $feature_class = Form::Factory->control_feature_class($name);
+    for my $feature_name (keys %{ $args->{features} }) {
+        my $feature_class = Form::Factory->control_feature_class($feature_name);
         next unless $feature_class->does('Form::Factory::Feature::Role::BuildAttribute');
 
         $feature_class->build_attribute(
-            $args->{features}{$name}, $meta, $name, $args
+            $args->{features}{$feature_name}, $meta, $name, $args
         );
     }
 

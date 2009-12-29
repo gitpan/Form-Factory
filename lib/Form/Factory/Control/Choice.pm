@@ -1,5 +1,6 @@
 package Form::Factory::Control::Choice;
-our $VERSION = '0.008';
+our $VERSION = '0.009';
+
 
 use Moose;
 
@@ -9,7 +10,7 @@ Form::Factory::Control::Choice - Helper class for tracking choices
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 

@@ -1,5 +1,6 @@
 package Form::Factory::Feature::Control::MatchCode;
-our $VERSION = '0.008';
+our $VERSION = '0.009';
+
 
 use Moose;
 
@@ -16,7 +17,7 @@ Form::Factory::Feature::Control::MatchCode - Greps the control value for correct
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 

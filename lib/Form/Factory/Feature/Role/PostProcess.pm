@@ -1,5 +1,6 @@
 package Form::Factory::Feature::Role::PostProcess;
-our $VERSION = '0.008';
+our $VERSION = '0.009';
+
 
 use Moose::Role;
 
@@ -11,11 +12,14 @@ Form::Factory::Feature::Role::PostProcess - features that run just after process
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 
   package MyApp::Feature::Qux;
+our $VERSION = '0.009';
+
+
   use Moose;
 
   with qw(
@@ -27,6 +31,12 @@ version 0.008
       my $self = shift;
       MyApp::Logger->info('Ending the process.');
   }
+
+  package Form::Factory::Feature::Custom::Qux;
+our $VERSION = '0.009';
+
+
+  sub register_implementation { 'MyApp::Feature::Qux' }
 
 =head1 DESCRIPTION
 

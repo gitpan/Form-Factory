@@ -1,5 +1,6 @@
 package Form::Factory::Feature::Role::Control;
-our $VERSION = '0.008';
+our $VERSION = '0.009';
+
 
 use Moose::Role;
 
@@ -11,11 +12,14 @@ Form::Factory::Feature::Role::Control - Form features tied to particular control
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 
   package MyApp::Feature::Control::Color;
+our $VERSION = '0.009';
+
+
   use Moose;
 
   with qw( 
@@ -48,11 +52,17 @@ version 0.008
   }
 
   package Form::Factory::Feature::Control::Custom::Color;
+our $VERSION = '0.009';
+
+
   sub register_implementation { 'MyApp::Feature::Control::Color' }
 
 And then used in an action via:
 
   package MyApp::Action::Foo;
+our $VERSION = '0.009';
+
+
   use Form::Factory::Processor;
 
   has_control favorite_primary_color => (

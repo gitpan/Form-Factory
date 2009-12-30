@@ -1,5 +1,5 @@
 package Form::Factory::Control::Button;
-our $VERSION = '0.009';
+our $VERSION = '0.010';
 
 
 use Moose;
@@ -16,7 +16,7 @@ Form::Factory::Control::Button - The button control
 
 =head1 VERSION
 
-version 0.009
+version 0.010
 
 =head1 SYNOPSIS
 

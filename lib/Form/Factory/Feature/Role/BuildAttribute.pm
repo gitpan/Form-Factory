@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Role::BuildAttribute;
-our $VERSION = '0.009';
+our $VERSION = '0.010';
 
 
 use Moose::Role;
@@ -12,12 +12,12 @@ Form::Factory::Feature::Role::BuildAttribute - control features that modify the 
 
 =head1 VERSION
 
-version 0.009
+version 0.010
 
 =head1 SYNOPSIS
 
   package MyApp::Feature::AddPredicate;
-our $VERSION = '0.009';
+our $VERSION = '0.010';
 
 
   use Moose;
@@ -34,7 +34,7 @@ our $VERSION = '0.009';
   }
 
   package Form::Factory::Feature::Control::Custom::AddPredicate;
-our $VERSION = '0.009';
+our $VERSION = '0.010';
 
 
   sub register_implementation { 'MyApp::Feature::FillFromRecord' }
@@ -46,6 +46,30 @@ Control features that implement this role are given the opportunity to directly 
 This is done by implementing the C<build_attribute> class method. This method will be passed a hash representing the feature arguments for this feature (since the feature will not yet exist as an object). It will then be passed the meta-class object, the name of the attribute being added, and a normalized hash of attribute parameters.
 
 You may use these arguments to manipulate the attribute before it is created, create additional attributes, etc.
+
+=head1 ROLE METHODS
+
+=head2 build_attribute
+
+The C<build_attribute> method should be implemented something like this:
+
+  sub build_attribute {
+      my ($class, $options, $meta, $name, $attr) = @_;
+
+      # do something ...
+  }
+
+This method is called while the action class is being compiled. This method can be used to modify how the action attribute is created.
+
+The C<$class> is the feature class this subroutine belongs to. The feature will not have been created nearly this early.
+
+The C<$options> are the feature options passed to the C<has_control> statement.
+
+The C<$meta> is the metaclass object that the attribute is about to be added to.
+
+The C<$name> is the name of the attribute being added to the metaclass.
+
+The C<$attr> is the arguments that are about to be passed to the attribute constructor. This the hash of argumentst that will be passed to the attribute constructor shortly. Modifying this hash will change the attribute construction.
 
 =head1 AUTHOR
 

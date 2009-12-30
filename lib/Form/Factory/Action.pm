@@ -1,5 +1,5 @@
 package Form::Factory::Action;
-our $VERSION = '0.009';
+our $VERSION = '0.010';
 
 
 use Moose::Role;
@@ -16,12 +16,12 @@ Form::Factory::Action - Role implemented by actions
 
 =head1 VERSION
 
-version 0.009
+version 0.010
 
 =head2 SYNOPSIS
 
   package MyApp::Action::Foo;
-our $VERSION = '0.009';
+our $VERSION = '0.010';
 
 
   use Form::Factory::Processor;
@@ -191,10 +191,11 @@ sub _build_controls {
             $options{$key} = $value->code->($self, $key);
         }
 
+        my $control_name = $meta_control->name;
         my %control_args = (
             control => $meta_control->control,
             options => {
-                name => $meta_control->name,
+                name => $control_name,
                 ($meta_control->has_documentation 
                     ? (documentation => $meta_control->documentation) : ()),
                 %options,
@@ -210,7 +211,7 @@ sub _build_controls {
             next unless $feature_class->does('Form::Factory::Feature::Role::BuildControl');
 
             $feature_class->build_control(
-                $meta_features->{$feature_name}, \%control_args
+                $meta_features->{$feature_name}, $self, $control_name, \%control_args
             );
         }
 

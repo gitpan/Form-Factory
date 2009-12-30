@@ -1,5 +1,5 @@
 package Form::Factory::Test::Feature::Control::FillOnAssignment;
-our $VERSION = '0.009';
+our $VERSION = '0.010';
 
 
 use Test::Able;

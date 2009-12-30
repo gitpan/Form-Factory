@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Role::PostProcess;
-our $VERSION = '0.009';
+our $VERSION = '0.010';
 
 
 use Moose::Role;
@@ -12,12 +12,12 @@ Form::Factory::Feature::Role::PostProcess - features that run just after process
 
 =head1 VERSION
 
-version 0.009
+version 0.010
 
 =head1 SYNOPSIS
 
   package MyApp::Feature::Qux;
-our $VERSION = '0.009';
+our $VERSION = '0.010';
 
 
   use Moose;
@@ -33,7 +33,7 @@ our $VERSION = '0.009';
   }
 
   package Form::Factory::Feature::Custom::Qux;
-our $VERSION = '0.009';
+our $VERSION = '0.010';
 
 
   sub register_implementation { 'MyApp::Feature::Qux' }
@@ -41,6 +41,12 @@ our $VERSION = '0.009';
 =head1 DESCRIPTION
 
 Features that run something immediately after the action runs may implement this role. This feature will run after the action does whether it succeeds or not. It will not run if an exception is thrown.
+
+=head1 ROLE METHOD
+
+=head2 post_process
+
+This method is called immediately after the C<run> method is called. It is passed no arguments other than the feature object it is called upon. It's return value is ignored.
 
 =head1 AUTHOR
 

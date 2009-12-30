@@ -11,7 +11,7 @@ WriteMakefile(
   NAME      => 'Form::Factory',
   AUTHOR    => "Andrew\ Sterling\ Hanenkamp\ \<hanenkamp\@cpan\.org\>",
   ABSTRACT  => "A\ general\-purpose\ form\ handling\ API",
-  VERSION   => '0.009',
+  VERSION   => '0.010',
   EXE_FILES => [ qw() ],
   (eval { ExtUtils::MakeMaker->VERSION(6.31) } ? (LICENSE => 'perl') : ()),
   PREREQ_PM    => {

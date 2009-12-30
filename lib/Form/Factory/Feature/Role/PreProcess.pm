@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Role::PreProcess;
-our $VERSION = '0.009';
+our $VERSION = '0.010';
 
 
 use Moose::Role;
@@ -12,12 +12,12 @@ Form::Factory::Feature::Role::PreProcess - features that run just before process
 
 =head1 VERSION
 
-version 0.009
+version 0.010
 
 =head1 SYNOPSIS
 
   package MyApp::Feature::Baz;
-our $VERSION = '0.009';
+our $VERSION = '0.010';
 
 
   use Moose;
@@ -33,7 +33,7 @@ our $VERSION = '0.009';
   }
 
   package Form::Factory::Feature::Custom::Baz;
-our $VERSION = '0.009';
+our $VERSION = '0.010';
 
 
   sub register_implementation { 'MyApp::Feature::Baz' }
@@ -41,6 +41,14 @@ our $VERSION = '0.009';
 =head1 DESCRIPTION
 
 Features that run something immediately before the action runs may implement this role. This feature cannot stop the action from running. That must be performed with a L<Form::Factory::Feature::Role::Check>.
+
+=head1 ROLE METHOD
+
+=head2 pre_process
+
+This method is called immediately before the C<run> method is called. It is passed no arguments other than the feature object it is called upon. It's return value is ignored.
+
+This method can be used to prevent the C<run> method from being called by throwing an exception.
 
 =head1 AUTHOR
 

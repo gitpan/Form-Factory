@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Functional;
-our $VERSION = '0.009';
+our $VERSION = '0.010';
 
 
 use Moose;
@@ -18,12 +18,12 @@ Form::Factory::Feature::Functional - A generic feature for actions
 
 =head1 VERSION
 
-version 0.009
+version 0.010
 
 =head1 SYNOPSIS
 
   package MyApp::Action::Foo;
-our $VERSION = '0.009';
+our $VERSION = '0.010';
 
 
   use Form::Factory::Processor;

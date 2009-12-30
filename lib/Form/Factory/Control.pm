@@ -1,5 +1,5 @@
 package Form::Factory::Control;
-our $VERSION = '0.009';
+our $VERSION = '0.010';
 
 
 use Moose::Role;
@@ -15,12 +15,12 @@ Form::Factory::Control - high-level API for working with form controls
 
 =head1 VERSION
 
-version 0.009
+version 0.010
 
 =head1 SYNOPSIS
 
   package MyApp::Control::Slider;
-our $VERSION = '0.009';
+our $VERSION = '0.010';
 
 
   use Moose;
@@ -58,7 +58,7 @@ our $VERSION = '0.009';
   }
 
   package Form::Factory::Control::Custom::Slider;
-our $VERSION = '0.009';
+our $VERSION = '0.010';
 
 
   sub register_implementation { 'MyApp::Control::Slider' }

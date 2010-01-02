@@ -1,10 +1,10 @@
 package Form::Factory::Control::Role::Value;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
 use Moose::Role;
 
-requires qw( current_value );
+requires qw( current_value has_current_value );
 
 =head1 NAME
 
@@ -12,7 +12,7 @@ Form::Factory::Control::Role::Value - controls with values
 
 =head1 VERSION
 
-version 0.010
+version 0.011
 
 =head1 DESCRIPTION
 
@@ -76,6 +76,14 @@ The C<current_value> method is an accessor and mutator for values on the control
   }
 
 The value will change if set, but the C<default_value> attribute is used if available and it will fall back to an empty string failing that.
+
+=head2 has_current_value
+
+All value controls must also define a C<has_current_value> method. This is used to determine if the control has a current value. This should be a little more robust than a simple check on whether the C<current_value> is defined, though. Rather, it should check if this is a useful value.
+
+Typically, in forms, an empty string submitted indicates a blank value rather than a useful value. That is, it may be defined, but it's not valuable.
+
+This method is only given the control object as it's parameter and the return value is a boolean indicating whether the current value is useful.
 
 =head1 AUTHOR
 

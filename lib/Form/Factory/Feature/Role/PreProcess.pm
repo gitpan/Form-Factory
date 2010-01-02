@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Role::PreProcess;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
 use Moose::Role;
@@ -12,12 +12,12 @@ Form::Factory::Feature::Role::PreProcess - features that run just before process
 
 =head1 VERSION
 
-version 0.010
+version 0.011
 
 =head1 SYNOPSIS
 
   package MyApp::Feature::Baz;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
   use Moose;
@@ -33,7 +33,7 @@ our $VERSION = '0.010';
   }
 
   package Form::Factory::Feature::Custom::Baz;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
   sub register_implementation { 'MyApp::Feature::Baz' }

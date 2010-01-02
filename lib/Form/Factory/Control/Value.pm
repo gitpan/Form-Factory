@@ -1,5 +1,5 @@
 package Form::Factory::Control::Value;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
 use Moose;
@@ -18,7 +18,7 @@ Form::Factory::Control::Value - A read-only value control
 
 =head1 VERSION
 
-version 0.010
+version 0.011
 
 =head1 SYNOPSIS
 
@@ -80,6 +80,14 @@ sub current_value {
     $self->value(@_) if @_;
     return $self->value;
 };
+
+=head2 has_current_value
+
+We always have a useful value here since we require one to be set.
+
+=cut
+
+sub has_current_value { 1 }
 
 =head1 AUTHOR
 

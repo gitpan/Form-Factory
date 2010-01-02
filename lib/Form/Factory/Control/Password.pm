@@ -1,5 +1,5 @@
 package Form::Factory::Control::Password;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
 use Moose;
@@ -16,7 +16,7 @@ Form::Factory::Control::Password - the password control
 
 =head1 VERSION
 
-version 0.010
+version 0.011
 
 =head1 SYNOPSIS
 
@@ -47,6 +47,17 @@ sub current_value {
     $self->value(shift) if @_;
     return $self->has_value ? $self->value
          :                    '';
+}
+
+=head2 has_current_value
+
+We have a useful current value when it is defined and the length of the string is greater than zero.
+
+=cut
+
+sub has_current_value {
+    my $self = shift;
+    return length($self->current_value) > 0;
 }
 
 =head1 AUTHOR

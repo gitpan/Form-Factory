@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Control::MatchCode;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
 use Moose;
@@ -17,7 +17,7 @@ Form::Factory::Feature::Control::MatchCode - Greps the control value for correct
 
 =head1 VERSION
 
-version 0.010
+version 0.011
 
 =head1 SYNOPSIS
 
@@ -60,10 +60,9 @@ Checks to make sure the control does either L<Form::Factory::Control::Role::Scal
 sub check_control { 
     my ($self, $control) = @_;
 
-    return if $control->does('Form::Factory::Control::Role::ListValue');
-    return if $control->does('Form::Factory::Control::Role::ScalarValue');
+    return if $control->does('Form::Factory::Control::Role::Value');
 
-    die "the match_code feature only works with scalar or list valued controls";
+    die "the match_code feature only works with valued controls";
 }
 
 =head2 check
@@ -75,14 +74,14 @@ Does the work of running the given subroutine over the control value and reports
 sub check {
     my $self    = shift;
     my $control = $self->control;
-    my $value   = $control->does('Form::Factory::Control::Role::ScalarValue')
-                ? $control->current_value
-                : $control->current_values
-                ;
+    my $value   = $control->current_value;
 
     unless ($self->code->($value)) {
         $self->control_error('the %s is not correct');
+        $self->result->is_valid(0);
     }
+
+    $self->result->is_valid(1) unless $self->result->is_validated;
 }
 
 =head1 AUTHOR

@@ -1,5 +1,5 @@
 package TestApp::Action::Middle;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
 use Form::Factory::Processor;
@@ -14,6 +14,7 @@ has_checker foo_must_not_have_digits => sub {
     my $self = shift;
     if ($self->controls->{foo}->current_value =~ /\d/) {
         $self->error('Foo must not contain numbers');
+        $self->result->is_valid(0);
     }
 };
 

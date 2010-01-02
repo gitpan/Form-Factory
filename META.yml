@@ -12,4 +12,4 @@ requires:
   List::MoreUtils: 0.22
   Moose: 0.93
   Test::Able: 0.09
-version: 0.010
+version: 0.011

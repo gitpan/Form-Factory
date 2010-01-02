@@ -1,5 +1,5 @@
 package TestApp::Action::Top;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
 use Form::Factory::Processor;
@@ -12,6 +12,7 @@ has_checker foo_must_not_have_uppercase_letters => sub {
     my $self = shift;
     if ($self->controls->{foo}->current_value =~ /\p{IsUpper}/) {
         $self->error('Foo must not contain uppercase letters');
+        $self->result->is_valid(0);
     }
 };
 

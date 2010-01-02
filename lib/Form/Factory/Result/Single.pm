@@ -1,5 +1,5 @@
 package Form::Factory::Result::Single;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
 use Moose;
@@ -12,7 +12,7 @@ Form::Factory::Result::Single - Form result class representing a single result
 
 =head1 VERSION
 
-version 0.010
+version 0.011
 
 =head1 SYNOPSIS
 
@@ -47,9 +47,10 @@ A boolean value indicating whether the action checked out okay. When set, the C<
 =cut
 
 has is_valid => (
-    is       => 'rw',
-    isa      => 'Bool',
+    is        => 'rw',
+    isa       => 'Bool',
     predicate => 'is_validated',
+    clearer   => 'clear_validation',
 );
 
 =head2 is_success
@@ -59,9 +60,10 @@ A boolean value indicating whether the action ran okay. When set, the C<is_outco
 =cut
 
 has is_success => (
-    is       => 'rw',
-    isa      => 'Bool',
+    is        => 'rw',
+    isa       => 'Bool',
     predicate => 'is_outcome_known',
+    clearer   => 'clear_outcome',
 );
 
 =head2 messages
@@ -84,7 +86,7 @@ This is a hash of other information to attach to the result. This can be anythin
 =cut
 
 has content => (
-    is       => 'ro',
+    is       => 'rw',
     isa      => 'HashRef',
     required => 1,
     default  => sub { {} },
@@ -103,6 +105,19 @@ The C<%options> are passed to the constructor of L<Form::Factory::Message>. The 
 sub add_message {
     my ($self, %params) = @_;
     push @{ $self->messages }, Form::Factory::Message->new( %params );
+}
+
+=head2 clear_state
+
+Clears the C<is_valid> and C<is_success> flags (which also clears C<is_failure>, C<is_validated>, and C<is_outcome_known>). This also resets C<content> to an empty hash.
+
+=cut
+
+sub clear_state {
+    my $self = shift;
+    $self->clear_validation;
+    $self->clear_outcome;
+    $self->content({});
 }
 
 =head2 clear_messages

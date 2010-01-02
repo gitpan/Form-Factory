@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Role::Control;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
 use Moose::Role;
@@ -12,12 +12,12 @@ Form::Factory::Feature::Role::Control - Form features tied to particular control
 
 =head1 VERSION
 
-version 0.010
+version 0.011
 
 =head1 SYNOPSIS
 
   package MyApp::Feature::Control::Color;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
   use Moose;
@@ -47,12 +47,14 @@ our $VERSION = '0.010';
       my $self  = shift;
       my $value = $self->control->current_value;
 
-      $self->control_error('the %s does not look like a color')
-          unless grep { $value eq $_ } @{ $self->recognized_colors };
+      unless (grep { $value eq $_ } @{ $self->recognized_colors }) {
+          $self->control_error('the %s does not look like a color');
+          $self->result->is_valid(0);
+      }
   }
 
   package Form::Factory::Feature::Control::Custom::Color;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
   sub register_implementation { 'MyApp::Feature::Control::Color' }
@@ -60,7 +62,7 @@ our $VERSION = '0.010';
 And then used in an action via:
 
   package MyApp::Action::Foo;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
   use Form::Factory::Processor;

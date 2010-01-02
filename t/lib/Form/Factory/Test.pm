@@ -1,8 +1,9 @@
 package Form::Factory::Test;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
 use Test::Able;
+use List::Util qw( shuffle );
 
 use Form::Factory;
 
@@ -10,7 +11,7 @@ has test_packages => (
     is        => 'ro',
     isa       => 'ArrayRef[Str]',
     required  => 1,
-    default   => sub { [ qw(
+    default   => sub { [ shuffle qw(
         Form::Factory::Test::Action::AllControls
         Form::Factory::Test::Action::Basic
         Form::Factory::Test::Action::Controls
@@ -21,8 +22,11 @@ has test_packages => (
         Form::Factory::Test::Feature::Control::Length
         Form::Factory::Test::Feature::Control::Required
         Form::Factory::Test::Feature::Control::Trim
+        Form::Factory::Test::Feature::RequireNoneOrAll
         Form::Factory::Test::Interface::CLI
         Form::Factory::Test::Interface::HTML
+        Form::Factory::Test::Result::Gathered
+        Form::Factory::Test::Result::Single
     ) ] },
 );
 

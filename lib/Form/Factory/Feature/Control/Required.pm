@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Control::Required;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
 use Moose;
@@ -17,7 +17,7 @@ Form::Factory::Feature::Control::Required - Makes sure a value is set on a contr
 
 =head1 VERSION
 
-version 0.010
+version 0.011
 
 =head1 SYNOPSIS
 
@@ -43,8 +43,7 @@ Only works with scalar and list valued controls.
 sub check_control {
     my ($self, $control) = @_;
 
-    return if $control->does('Form::Factory::Control::Role::ScalarValue');
-    return if $control->does('Form::Factory::Control::Role::ListValue');
+    return if $control->does('Form::Factory::Control::Role::Value');
 
     die "the required feature does not know how to check the value of $control";
 }
@@ -59,28 +58,13 @@ sub check {
     my $self    = shift;
     my $control = $self->control;
 
-    # Handle scalar value controls
-    if ($control->does('Form::Factory::Control::Role::ScalarValue')) {
-        my $value = $control->current_value;
-        unless (length($value) > 0) {
-            $self->control_error('the %s is required');
-            $self->result->is_valid(0);
-        }
-        else {
-            $self->result->is_valid(1);
-        }
+    if ($control->has_current_value) {
+        $self->result->is_valid(1);
     }
 
-    # Handle list value controls
-    else { 
-        my $values = $control->current_values;
-        unless (@$values > 0) {
-            $self->control_error('at least one value for %s is required');
-            $self->result->is_valid(0);
-        }
-        else {
-            $self->result->is_valid(1);
-        }
+    else {
+        $self->control_error('the %s is required');
+        $self->result->is_valid(0);
     }
 }
 

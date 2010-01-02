@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Role::BuildControl;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
 use Moose::Role;
@@ -12,12 +12,12 @@ Form::Factory::Feature::Role::BuildControl - control features that modify contro
 
 =head1 VERSION
 
-version 0.010
+version 0.011
 
 =head1 SYNOPSIS
 
   package MyApp::Feature::Control::CapitalizeLabel;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
   use Moose;
@@ -38,7 +38,7 @@ our $VERSION = '0.010';
   }
 
   package Form::Factory::Feature::Control::Custom::CapitalizeLabel;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
   sub register_implementation { 'MyApp::Feature::Control::CapitalizeLabel' }

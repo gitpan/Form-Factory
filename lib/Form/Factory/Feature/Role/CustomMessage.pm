@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Role::CustomMessage;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
 use Moose::Role;
@@ -10,7 +10,7 @@ Form::Factory::Feature::Role::CustomMessage - features with custom messages
 
 =head1 VERSION
 
-version 0.010
+version 0.011
 
 =head1 DESCRIPTION
 

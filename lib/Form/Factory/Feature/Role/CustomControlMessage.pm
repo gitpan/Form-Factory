@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Role::CustomControlMessage;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
 use Moose::Role;
@@ -8,11 +8,11 @@ with qw( Form::Factory::Feature::Role::CustomMessage );
 
 =head1 NAME
 
-Form::Factory::Feature::role::CustomControlMessage - control features with custom messages
+Form::Factory::Feature::Role::CustomControlMessage - control features with custom messages
 
 =head1 VERSION
 
-version 0.010
+version 0.011
 
 =head1 SYNOPSIS
 
@@ -47,7 +47,7 @@ sub format_message {
 
     my $control_label 
         = $control->does('Form::Factory::Control::Role::Labeled') ? $control->label
-        :                                                         $control->name
+        :                                                           $control->name
         ;
 
     sprintf $message, $control_label;

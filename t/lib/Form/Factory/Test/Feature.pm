@@ -1,5 +1,5 @@
 package Form::Factory::Test::Feature;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
 use Test::Able::Role;
@@ -73,8 +73,8 @@ test plan => 6, basic_feature_checks => sub {
     }
 };
 
-teardown clear_messages => sub {
+teardown clear_action => sub {
     my $self = shift;
-    $self->action->results->clear_all;
+    $self->action->clear;
 };
 1;

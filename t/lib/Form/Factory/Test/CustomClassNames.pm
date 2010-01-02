@@ -1,5 +1,5 @@
 package Form::Factory::Test::CustomClassNames;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
 use Test::Able;

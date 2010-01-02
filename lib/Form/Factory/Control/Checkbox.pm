@@ -1,5 +1,5 @@
 package Form::Factory::Control::Checkbox;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
 use Moose;
@@ -16,7 +16,7 @@ Form::Factory::Control::Checkbox - the checkbox control
 
 =head1 VERSION
 
-version 0.010
+version 0.011
 
 =head1 SYNOPSIS
 
@@ -88,6 +88,19 @@ sub current_value {
     return $self->true_value  if $self->true_value  eq $self->value;
     return $self->false_value if $self->false_value eq $self->value;
     return;
+}
+
+=head2 has_current_value
+
+If the value is true or false, it has a current value. Otherwise, it does not.
+
+=cut
+
+sub has_current_value {
+    my $self = shift;
+
+    return ($self->true_value  eq $self->value
+         || $self->false_value eq $self->value);
 }
 
 =head1 AUTHOR

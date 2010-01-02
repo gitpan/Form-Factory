@@ -1,5 +1,5 @@
 package Form::Factory::Feature;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
 use Moose::Role;
@@ -12,12 +12,12 @@ Form::Factory::Feature - Interface for objects that modify how actions work
 
 =head1 VERSION
 
-version 0.010
+version 0.011
 
 =head1 SYNOPSIS
 
   package MyApp::Feature::Foo;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
   use Moose;
@@ -25,7 +25,7 @@ our $VERSION = '0.010';
   with qw( Form::Factory::Feature );
 
   package Form::Factory:;Feature::Custom::Foo;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
   sub register_implementation { 'MyApp::Feature::Foo' }
@@ -69,7 +69,7 @@ The action this feature has been attached to.
 
 has action => (
     is        => 'ro',
-    isa       => 'Form::Factory::Action',
+    does      => 'Form::Factory::Action',
     required  => 1,
     weak_ref  => 1,
 );

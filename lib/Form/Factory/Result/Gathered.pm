@@ -1,5 +1,5 @@
 package Form::Factory::Result::Gathered;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
 use Moose;
@@ -15,7 +15,7 @@ Form::Factory::Result::Gathered - A group of results
 
 =head1 VERSION
 
-version 0.010
+version 0.011
 
 =head1 SYNOPSIS
 
@@ -79,9 +79,23 @@ sub gather_results {
 
     my $results = $self->_results;
     for my $result (@results) {
+        die 'you attempted to pass a result itself to gather_results(), but you cannot gather results recursively'
+            if refaddr $result == refaddr $self;
+
         my $addr = refaddr $result;
         $results->{$addr} = $result;
     }
+}
+
+=head2 clear_state
+
+Clears the state of all gathered results. It just calls C<clear_state> recursively on all results.
+
+=cut
+
+sub clear_state {
+    my $self = shift;
+    $_->clear_state for $self->results;
 }
 
 =head2 clear_results
@@ -129,6 +143,7 @@ Clears all messages on the gathered results (via L</clear_message>) and then cle
 
 sub clear_all {
     my $self = shift;
+    $self->clear_state;
     $self->clear_messages;
     $self->clear_results;
 }

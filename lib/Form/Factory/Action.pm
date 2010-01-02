@@ -1,5 +1,5 @@
 package Form::Factory::Action;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
 use Moose::Role;
@@ -16,12 +16,12 @@ Form::Factory::Action - Role implemented by actions
 
 =head1 VERSION
 
-version 0.010
+version 0.011
 
 =head2 SYNOPSIS
 
   package MyApp::Action::Foo;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
   use Form::Factory::Processor;
@@ -329,8 +329,7 @@ sub clear {
         }
     }
 
-    $self->results->clear_messages;
-    $self->results->clear_results;
+    $self->results->clear_all;
     $self->result(Form::Factory::Result::Single->new);
 }
 
@@ -528,9 +527,6 @@ sub check {
     $self->_run_features(check => @_);
 
     $self->gather_results;
-
-    my @errors = $self->error_messages;
-    $self->result->is_valid(@errors == 0);
 }
 
 =head2 process

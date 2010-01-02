@@ -1,5 +1,5 @@
 package Form::Factory::Control::SelectMany;
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 
 use Moose;
@@ -19,7 +19,7 @@ Form::Factory::Control::SelectMany - the multi-select control
 
 =head1 VERSION
 
-version 0.010
+version 0.011
 
 =head1 SYNOPSIS
 
@@ -127,6 +127,19 @@ sub is_choice_selected {
     my ($self, $choice) = @_;
 
     return any { $_ eq $choice->value } @{ $self->current_values };
+}
+
+=head2 has_current_value
+
+If more than zero values have been selected, we have a useful value.
+
+=cut
+
+sub has_current_value {
+    my $self = shift;
+
+    my $values = $self->current_value;
+    return scalar(@$values) > 0;
 }
 
 =head1 AUTHOR

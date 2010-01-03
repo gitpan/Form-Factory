@@ -1,10 +1,19 @@
 package TestApp::Action::Bottom;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
 use Form::Factory::Processor;
 
 extends qw( TestApp::Action::Middle );
+
+has_control '+foo' => (
+    features   => {
+        required => 0,
+        length   => {
+            maximum => 20,
+        },
+    },
+); 
 
 has_control baz => (
     control    => 'text',

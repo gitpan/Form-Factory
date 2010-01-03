@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Control::MatchCode;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
 use Moose;
@@ -11,13 +11,15 @@ with qw(
     Form::Factory::Feature::Role::CustomControlMessage
 );
 
+use Carp ();
+
 =head1 NAME
 
 Form::Factory::Feature::Control::MatchCode - Greps the control value for correctness
 
 =head1 VERSION
 
-version 0.011
+version 0.012
 
 =head1 SYNOPSIS
 
@@ -62,7 +64,7 @@ sub check_control {
 
     return if $control->does('Form::Factory::Control::Role::Value');
 
-    die "the match_code feature only works with valued controls";
+    Carp::croak("the match_code feature only works with valued controls");
 }
 
 =head2 check

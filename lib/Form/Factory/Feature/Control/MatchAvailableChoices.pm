@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Control::MatchAvailableChoices;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
 use Moose;
@@ -11,13 +11,15 @@ with qw(
     Form::Factory::Feature::Role::CustomControlMessage
 );
 
+use Carp ();
+
 =head1 NAME
 
 Form::Factory::Feature::Control::MatchAvailableChoices - Check for choice availability
 
 =head1 VERSION
 
-version 0.011
+version 0.012
 
 =head1 SYNOPSIS
 
@@ -48,12 +50,12 @@ Verifies that the control does the L<Form::Factory::Control::Role::AvailableChoi
 sub check_control {
     my ($self, $control) = @_;
 
-    die "the match_available_options feature only works for controls that have available choices, not $control"
+    Carp::croak("the match_available_options feature only works for controls that have available choices, not $control")
         unless $control->does('Form::Factory::Control::Role::AvailableChoices');
 
     return if $control->does('Form::Factory::Control::Role::Value');
 
-    die "the match_available_feature does not know hwo to check the value of $control";
+    Carp::croak("the match_available_feature does not know hwo to check the value of $control");
 }
 
 =head2 check

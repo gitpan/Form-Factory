@@ -1,9 +1,10 @@
 package Form::Factory::Action;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
 use Moose::Role;
 
+use Carp ();
 use Form::Factory::Feature::Functional;
 use Form::Factory::Result::Gathered;
 use Form::Factory::Result::Single;
@@ -16,12 +17,12 @@ Form::Factory::Action - Role implemented by actions
 
 =head1 VERSION
 
-version 0.011
+version 0.012
 
 =head2 SYNOPSIS
 
   package MyApp::Action::Foo;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
   use Form::Factory::Processor;
@@ -301,7 +302,6 @@ sub unstash {
         for my $key (@$keys) {
             next unless exists $state->{$key};
             eval { $control->$key($state->{$key}) };
-            #warn "unstash partially failed: $@" if $@;
         }
     }
 
@@ -599,7 +599,7 @@ sub set_attributes_from_controls {
     my $controls = $self->controls;
     while (my ($name, $control) = each %$controls) {
         my $attribute = $meta->find_attribute_by_name($name);
-        die "attribute for control $name not found on $self" 
+        Carp::croak("attribute for control $name not found on $self")
             unless defined $attribute;
         $control->set_attribute_value($self, $attribute);
     }

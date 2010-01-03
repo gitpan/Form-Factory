@@ -1,11 +1,12 @@
 package Form::Factory::Interface::HTML;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
 use Moose;
 
 with qw( Form::Factory::Interface );
 
+use Carp ();
 use Scalar::Util qw( blessed );
 
 use Form::Factory::Interface::HTML::Widget::Div;
@@ -23,7 +24,7 @@ Form::Factory::Interface::HTML - Simple HTML form interface
 
 =head1 VERSION
 
-version 0.011
+version 0.012
 
 =head1 SYNOPSIS
 
@@ -367,9 +368,9 @@ Consumes values using the widget for the given control.
 sub consume_control {
     my ($self, $control, %options) = @_;
 
-    die "no request option passed" unless defined $options{request};
+    Carp::croak("no request option passed") unless defined $options{request};
 
-    die "HTML interface does not know how to consume values for $control"
+    Carp::croak("HTML interface does not know how to consume values for $control")
         unless $control->does('Form::Factory::Control::Role::Value');
 
     my $widget = $self->new_widget_for_control($control);

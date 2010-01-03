@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Control::MatchRegex;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
 use Moose;
@@ -11,13 +11,15 @@ with qw(
     Form::Factory::Feature::Role::CustomControlMessage
 );
 
+use Carp ();
+
 =head1 NAME
 
 Form::Factory::Feature::Control::MatchRegex - Match a control value against a regex
 
 =head1 VERSION
 
-version 0.011
+version 0.012
 
 =head1 SYNOPSIS
 
@@ -62,7 +64,7 @@ sub check_control {
 
     return if $control->does('Form::Factory::Control::Role::ScalarValue');
 
-    die "the match_regex feature only works with scalar value controls, not $control";
+    Carp::croak("the match_regex feature only works with scalar value controls, not $control");
 }
 
 =head2 check

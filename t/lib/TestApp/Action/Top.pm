@@ -1,11 +1,18 @@
 package TestApp::Action::Top;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
 use Form::Factory::Processor;
 
 has_control foo => (
     control   => 'text',
+    features  => {
+        trim     => 1,
+        required => 1,
+        length   => {
+            minimum => 10,
+        },
+    },
 );
 
 has_checker foo_must_not_have_uppercase_letters => sub {

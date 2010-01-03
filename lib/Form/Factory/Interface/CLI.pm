@@ -1,10 +1,12 @@
 package Form::Factory::Interface::CLI;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
 use Moose;
 
 with qw( Form::Factory::Interface );
+
+use Carp ();
 
 =head1 NAME
 
@@ -12,7 +14,7 @@ Form::Factory::Interface::CLI - Command-line interface builder for form factory
 
 =head1 VERSION
 
-version 0.011
+version 0.012
 
 =head1 SYNOPSIS
 
@@ -89,7 +91,7 @@ has get_file => (
                 $fh = \*STDIN;
             }
             else {
-                open $fh, '<', $name or die "cannot read $name: $!\n";
+                open $fh, '<', $name or Carp::croak("cannot read $name: $!\n");
             }
 
             do { local $/; <$fh> };
@@ -144,7 +146,7 @@ Consumes the command-line arguments and files specified on the command-line to f
 sub consume_control {
     my ($self, $control, %options) = @_;
 
-    die "CLI interface does not know how to consume values for $control"
+    Carp::croak("CLI interface does not know how to consume values for $control")
         unless $control->does('Form::Factory::Control::Role::Value');
 
     my @argv = @{ $self->get_args->($self) };
@@ -184,7 +186,7 @@ sub consume_control {
     }
 
     else {
-        die sprintf("the --%s option should be used only once\n", $control->name)
+        Carp::croak(sprintf("the --%s option should be used only once\n", $control->name))
             if @values > 1;
      
         $control->current_value($get_value->($values[0]));

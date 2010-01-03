@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Control::Length;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
 use Moose;
@@ -11,13 +11,15 @@ with qw(
     Form::Factory::Feature::Role::CustomControlMessage
 );
 
+use Carp ();
+
 =head1 NAME
 
 Form::Factory::Feature::Control::Length - A control feature for checking length
 
 =head1 VERSION
 
-version 0.011
+version 0.012
 
 =head1 SYNOPSIS
 
@@ -67,7 +69,7 @@ sub BUILDARGS {
 
     if (defined $args->{minimum} and defined $args->{maximum}
             and $args->{minimum} >= $args->{maximum}) {
-        die 'length minimum must be less than maximum';
+        Carp::croak('length minimum must be less than maximum');
     }
 
     return $class->SUPER::BUILDARGS(@_);
@@ -86,7 +88,7 @@ sub check_control {
 
     return if $control->does('Form::Factory::Control::Role::ScalarValue');
 
-    die "the length feature only works with scalar values\n";
+    Carp::croak("the length feature only works with scalar values\n");
 }
 
 =head2 check

@@ -1,5 +1,5 @@
 package Form::Factory::Feature::RequireNoneOrAll;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
 use Moose;
@@ -11,18 +11,20 @@ with qw(
     Form::Factory::Feature::Role::Check
 );
 
+use Carp ();
+
 =head1 NAME
 
 Form::Factory::Feature::RequireNoneOrAll - if one control has a value, all should
 
 =head1 VERSION
 
-version 0.011
+version 0.012
 
 =head1 SYNOPSIS
 
   package MyApp::Action::Foo;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
   use Form::Factory::Processor;
@@ -98,7 +100,7 @@ sub check {
         CONTROL: for my $name (@$control_names) {
             my $control = $action->controls->{$name};
 
-            die "require_none_or_all does not know how to check values on $name"
+            Carp::croak("require_none_or_all does not know how to check values on $name")
                 unless $control->does('Form::Factory::Control::Role::Value');
 
             my $has_current_value = $control->has_current_value;
@@ -134,5 +136,18 @@ sub _control_label {
 
     return $control_label;
 }
+
+=head1 AUTHOR
+
+Andrew Sterling Hanenkamp C<< <hanenkamp@cpan.org> >>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2009 Qubling Software LLC.
+
+This library is free software. You can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
 
 1;

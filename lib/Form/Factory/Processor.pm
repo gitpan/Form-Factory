@@ -1,10 +1,11 @@
 package Form::Factory::Processor;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
 use Moose;
 use Moose::Exporter;
 
+use Carp ();
 use Form::Factory::Action;
 use Form::Factory::Action::Meta::Class;
 use Form::Factory::Action::Meta::Attribute::Control;
@@ -25,12 +26,12 @@ Form::Factory::Processor - Moos-ish helper for action classes
 
 =head1 VERSION
 
-version 0.011
+version 0.012
 
 =head1 SYNOPSIS
 
   package MyApp::Action::Foo;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
   use Form::Factory::Processor;
@@ -122,7 +123,7 @@ sub init_meta {
       features => \%control_features,
   );
 
-This works very similar to L<Moose/has>. This also applies the L<Form::Factory::Action::Meta::Attribute::Control> trait to the attribute and sets up other defaults.
+This works very similar to L<Moose/has>. This applies the L<Form::Factory::Action::Meta::Attribute::Control> trait to the attribute and sets up other defaults.
 
 The following defaults are set:
 
@@ -150,6 +151,36 @@ An empty hash references is used by default.
 
 =back
 
+You may pass any options you could pass to C<has> as well as the additional options for features, control options, etc. This also supports the C<'+name'> syntax for altering attributes that are inherited from a parent class. Currently, only the C<features> option is supported for this, which allows you to add new features or even to turn off features from the parent class. For example, if a control is setup in a parent like this:
+
+  has_control name => (
+      control   => 'text',
+      features  => {
+          trim     => 1,
+          required => 1,
+          length   => {
+              maximum => 20,
+              minimum => 3,
+           },
+      },
+  );
+
+A child class may choose to turn the required off and change the length checks by placing this in the subclass definition:
+
+  has_control '+name' => (
+      features => {
+          required => 0,
+          length   => {
+              maximum => 20,
+              minimum => 10,
+          },
+      },
+  );
+
+The C<trim> feature in the parent would remain in place as originally defined, the required feature is now turned off in the child class, and the length feature options have been replaced. This is done with a shallow merge, so top-level keys in the child class will replace top-level keys in the parent, but any listed in the parent, but not the child remain unchanged.
+
+B<DO NOT> use the C<required> attribute option on controls. If you try to do so, the call to C<has_control> will croak because this will not work with how attributes are setup. If you need an attribute to be required, do not use a control or use the required feature instead.
+
 =cut
 
 sub has_control {
@@ -157,28 +188,34 @@ sub has_control {
     my $name = shift;
     my $args = @_ == 1 ? shift : { @_ };
 
-    $args->{control}  ||= 'text';
-    $args->{options}  ||= {};
-    $args->{features} ||= {};
-    $args->{traits}   ||= [];
+    # Setup default unless this is an inherited control attribute
+    unless ($name =~ /^\+/) {
+        $args->{control}  ||= 'text';
+        $args->{options}  ||= {};
+        $args->{features} ||= {};
+        $args->{traits}   ||= [];
 
-    $args->{is}       ||= 'ro';
-    $args->{isa}      ||= Form::Factory->control_class($args->{control})->default_isa;
+        $args->{is}       ||= 'ro';
+        $args->{isa}      ||= Form::Factory->control_class($args->{control})->default_isa;
 
-    for my $value (values %{ $args->{features} }) {
-        $value = {} unless ref $value;
+        for my $value (values %{ $args->{features} }) {
+            $value = {} unless ref $value;
+        }
+
+        unshift @{ $args->{traits} }, 'Form::Control';
+
+        for my $feature_name (keys %{ $args->{features} }) {
+            my $feature_class = Form::Factory->control_feature_class($feature_name);
+            next unless $feature_class->does('Form::Factory::Feature::Role::BuildAttribute');
+
+            $feature_class->build_attribute(
+                $args->{features}{$feature_name}, $meta, $name, $args
+            );
+        }
     }
 
-    unshift @{ $args->{traits} }, 'Form::Control';
-
-    for my $feature_name (keys %{ $args->{features} }) {
-        my $feature_class = Form::Factory->control_feature_class($feature_name);
-        next unless $feature_class->does('Form::Factory::Feature::Role::BuildAttribute');
-
-        $feature_class->build_attribute(
-            $args->{features}{$feature_name}, $meta, $name, $args
-        );
-    }
+    Carp::croak(qq{the "required" setting is used on $name, but is forbidden on controls})
+        if $args->{required};
 
     $meta->add_attribute( $name => $args );
 }
@@ -259,7 +296,7 @@ Adds some code called during the post-process phase.
 
 sub _add_function {
     my ($type, $meta, $name, $code) = @_;
-    die "bad code given for $type $name" unless defined $code;
+    Carp::croak("bad code given for $type $name") unless defined $code;
     $meta->features->{functional}{$type . '_code'}{$name} = $code;
 }
 

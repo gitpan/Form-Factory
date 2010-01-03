@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Role::CustomControlMessage;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
 use Moose::Role;
@@ -12,7 +12,7 @@ Form::Factory::Feature::Role::CustomControlMessage - control features with custo
 
 =head1 VERSION
 
-version 0.011
+version 0.012
 
 =head1 SYNOPSIS
 

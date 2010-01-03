@@ -1,9 +1,10 @@
 package Form::Factory::Result::Gathered;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
 use Moose;
 
+use Carp ();
 use Scalar::Util qw( blessed refaddr );
 use List::MoreUtils qw( all any );
 
@@ -15,7 +16,7 @@ Form::Factory::Result::Gathered - A group of results
 
 =head1 VERSION
 
-version 0.011
+version 0.012
 
 =head1 SYNOPSIS
 
@@ -79,7 +80,7 @@ sub gather_results {
 
     my $results = $self->_results;
     for my $result (@results) {
-        die 'you attempted to pass a result itself to gather_results(), but you cannot gather results recursively'
+        Carp::croak('you attempted to pass a result itself to gather_results(), but you cannot gather results recursively')
             if refaddr $result == refaddr $self;
 
         my $addr = refaddr $result;

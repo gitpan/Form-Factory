@@ -1,5 +1,5 @@
 package Form::Factory::Control::Password;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
 use Moose;
@@ -16,7 +16,7 @@ Form::Factory::Control::Password - the password control
 
 =head1 VERSION
 
-version 0.011
+version 0.012
 
 =head1 SYNOPSIS
 

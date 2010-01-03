@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Role::Check;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
 use Moose::Role;
@@ -12,12 +12,12 @@ Form::Factory::Feature::Role::Check - features that check control values
 
 =head1 VERSION
 
-version 0.011
+version 0.012
 
 =head1 SYNOPSIS
 
   package MyApp::Feature::Bar;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
   use Moose;
@@ -42,7 +42,7 @@ our $VERSION = '0.011';
   }
 
   package Form::Factory::Feature::Custom::Bar;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
   sub register_implementation { 'MyApp::Feature::Bar' }

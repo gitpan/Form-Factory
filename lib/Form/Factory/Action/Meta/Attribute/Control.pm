@@ -1,5 +1,5 @@
 package Form::Factory::Action::Meta::Attribute::Control;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
 use Moose::Role;
@@ -10,12 +10,12 @@ Form::Factory::Action::Meta::Attribute::Control - Form control attribute-traits
 
 =head1 VERSION
 
-version 0.011
+version 0.012
 
 =head1 SYNOPSIS
 
   package MyApp::Action::Foo;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
   use Form::Factory::Processor;
@@ -92,6 +92,45 @@ has features => (
     default     => sub { {} },
 );
 
+=head1 METHODS
+
+=head2 legal_options_for_inheritance
+
+Modifies the L<Moose::Meta::Attribute> version to also allow L<features> to be modified.
+
+=cut
+
+around legal_options_for_inheritance => sub {
+    my $next    = shift;
+    my $self    = shift;
+    my @options = $self->$next(@_);
+    push @options, 'features';
+    return @options;
+};
+
+=head2 clone_and_inherit_options
+
+Modifies the L<Moose::Meta::Attribute> version to handle the merging of L<features>.
+
+=cut
+
+around clone_and_inherit_options => sub {
+    my ($next, $self, %options) = @_;
+
+    # Merge features
+    if ($options{features}) {
+        my $parent_features = $self->features;
+        my $child_features  = $options{features};
+
+        $options{features}  = { %$parent_features, %$child_features };
+        for my $key (keys %{ $options{features} }) {
+            delete $options{features}{$key} unless $options{features}{$key};
+        }
+    }
+
+    $self->$next(%options);
+};
+
 =head1 SEE ALSO
 
 L<Form::Factory::Processor>
@@ -110,7 +149,7 @@ it under the same terms as Perl itself.
 =cut
 
 package Moose::Meta::Attribute::Custom::Trait::Form::Control;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
 sub register_implementation { 'Form::Factory::Action::Meta::Attribute::Control' }

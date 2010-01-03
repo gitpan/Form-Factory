@@ -1,5 +1,5 @@
 package Form::Factory::Control::Text;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
 use Moose;
@@ -16,7 +16,7 @@ Form::Factory::Control::Text - A single line text field
 
 =head1 VERSION
 
-version 0.011
+version 0.012
 
 =head1 SYNOPSIS
 

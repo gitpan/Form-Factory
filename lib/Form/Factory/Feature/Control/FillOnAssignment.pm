@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Control::FillOnAssignment;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
 use Moose;
@@ -11,18 +11,20 @@ with qw(
     Form::Factory::Feature::Role::Control
 );
 
+use Carp ();
+
 =head1 NAME
 
 Form::Factory::Feature::Control::FillOnAssignment - Control gets the value of the attribute
 
 =head1 VERSION
 
-version 0.011
+version 0.012
 
 =head1 SYNOPSIS
 
   package MyApp::Action::Thing;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
   use Form::Factory::Processor;
@@ -35,7 +37,7 @@ our $VERSION = '0.011';
   );
 
   package Somewhere::Else;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
 
@@ -67,7 +69,7 @@ sub check_control {
 
     return if $control->does('Form::Factory::Control::Role::Value');
 
-    die "the fill_on_assignment feature does not know how to fill in the value of $control";
+    Carp::croak("the fill_on_assignment feature does not know how to fill in the value of $control");
 }
 
 =head2 build_attribute
@@ -80,7 +82,7 @@ sub build_attribute {
     my ($self, $options, $meta, $name, $attr) = @_;
 
     unless ($options->{no_warn}) {
-        warn "the $name attribute is read-only, but the fill_on_assignment feature is enabled for it, are you sure this is correct?"
+        Carp::carp("the $name attribute is read-only, but the fill_on_assignment feature is enabled for it, are you sure this is correct?")
             if $attr->{is} eq 'ro' or $attr->{is} eq 'bare';
     }
 

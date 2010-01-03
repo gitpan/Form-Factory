@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Control::Required;
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 
 use Moose;
@@ -11,13 +11,15 @@ with qw(
     Form::Factory::Feature::Role::CustomControlMessage
 );
 
+use Carp ();
+
 =head1 NAME
 
 Form::Factory::Feature::Control::Required - Makes sure a value is set on a control
 
 =head1 VERSION
 
-version 0.011
+version 0.012
 
 =head1 SYNOPSIS
 
@@ -45,7 +47,7 @@ sub check_control {
 
     return if $control->does('Form::Factory::Control::Role::Value');
 
-    die "the required feature does not know how to check the value of $control";
+    Carp::croak("the required feature does not know how to check the value of $control");
 }
 
 =head2 check

@@ -1,5 +1,5 @@
 package TestApp::Control::Null;
-our $VERSION = '0.012';
+our $VERSION = '0.013';
 
 
 use Moose;
@@ -14,7 +14,7 @@ sub current_value { }
 sub has_current_value { }
 
 package Form::Factory::Control::Custom::Null;
-our $VERSION = '0.012';
+our $VERSION = '0.013';
 
 
 sub register_implementation { 'TestApp::Control::Null' }

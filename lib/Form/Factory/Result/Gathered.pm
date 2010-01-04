@@ -1,5 +1,5 @@
 package Form::Factory::Result::Gathered;
-our $VERSION = '0.012';
+our $VERSION = '0.013';
 
 
 use Moose;
@@ -16,7 +16,7 @@ Form::Factory::Result::Gathered - A group of results
 
 =head1 VERSION
 
-version 0.012
+version 0.013
 
 =head1 SYNOPSIS
 

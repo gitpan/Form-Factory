@@ -1,5 +1,5 @@
 package Form::Factory::Feature::RequireNoneOrAll;
-our $VERSION = '0.012';
+our $VERSION = '0.013';
 
 
 use Moose;
@@ -19,12 +19,12 @@ Form::Factory::Feature::RequireNoneOrAll - if one control has a value, all shoul
 
 =head1 VERSION
 
-version 0.012
+version 0.013
 
 =head1 SYNOPSIS
 
   package MyApp::Action::Foo;
-our $VERSION = '0.012';
+our $VERSION = '0.013';
 
 
   use Form::Factory::Processor;

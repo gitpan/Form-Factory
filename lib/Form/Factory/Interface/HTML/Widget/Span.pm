@@ -1,5 +1,5 @@
 package Form::Factory::Interface::HTML::Widget::Span;
-our $VERSION = '0.012';
+our $VERSION = '0.013';
 
 
 use Moose;
@@ -12,7 +12,7 @@ Form::Factory::Interface::HTML::Widget::Span - HTML interface widget helper
 
 =head1 VERSION
 
-version 0.012
+version 0.013
 
 =head1 DESCRIPTION
 

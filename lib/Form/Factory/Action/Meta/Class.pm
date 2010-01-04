@@ -1,5 +1,5 @@
 package Form::Factory::Action::Meta::Class;
-our $VERSION = '0.012';
+our $VERSION = '0.013';
 
 
 use Moose::Role;
@@ -10,12 +10,12 @@ Form::Factory::Action::Meta::Class - The meta-class for form actions
 
 =head1 VERSION
 
-version 0.012
+version 0.013
 
 =head1 SYNOPSIS
 
   package MyApp::Action::Foo;
-our $VERSION = '0.012';
+our $VERSION = '0.013';
 
 
   use Form::Factory::Processor;

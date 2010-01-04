@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Role::BuildAttribute;
-our $VERSION = '0.012';
+our $VERSION = '0.013';
 
 
 use Moose::Role;
@@ -12,12 +12,12 @@ Form::Factory::Feature::Role::BuildAttribute - control features that modify the 
 
 =head1 VERSION
 
-version 0.012
+version 0.013
 
 =head1 SYNOPSIS
 
   package MyApp::Feature::AddPredicate;
-our $VERSION = '0.012';
+our $VERSION = '0.013';
 
 
   use Moose;
@@ -34,7 +34,7 @@ our $VERSION = '0.012';
   }
 
   package Form::Factory::Feature::Control::Custom::AddPredicate;
-our $VERSION = '0.012';
+our $VERSION = '0.013';
 
 
   sub register_implementation { 'MyApp::Feature::FillFromRecord' }

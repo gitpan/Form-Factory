@@ -1,5 +1,5 @@
 package TestApp::Action::Bottom;
-our $VERSION = '0.012';
+our $VERSION = '0.013';
 
 
 use Form::Factory::Processor;
@@ -8,6 +8,9 @@ extends qw( TestApp::Action::Middle );
 
 has_control '+foo' => (
     features   => {
+        fill_on_assignment => {
+            no_warning => 1,
+        },
         required => 0,
         length   => {
             maximum => 20,

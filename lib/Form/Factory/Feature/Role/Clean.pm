@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Role::Clean;
-our $VERSION = '0.012';
+our $VERSION = '0.013';
 
 
 use Moose::Role;
@@ -12,12 +12,12 @@ Form::Factory::Feature::Role::Clean - features that clean up control values
 
 =head1 VERSION
 
-version 0.012
+version 0.013
 
 =head1 SYNOPSIS
 
   package MyApp::Feature::Foo;
-our $VERSION = '0.012';
+our $VERSION = '0.013';
 
 
   use Moose;
@@ -35,7 +35,7 @@ our $VERSION = '0.012';
   }
 
   package Form::Factory::Feature::Foo;
-our $VERSION = '0.012';
+our $VERSION = '0.013';
 
 
   sub register_implementation { 'MyApp::Feature::Foo' }

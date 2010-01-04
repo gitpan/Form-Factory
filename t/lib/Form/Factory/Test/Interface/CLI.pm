@@ -1,5 +1,5 @@
 package Form::Factory::Test::Interface::CLI;
-our $VERSION = '0.012';
+our $VERSION = '0.013';
 
 
 use Test::Able;

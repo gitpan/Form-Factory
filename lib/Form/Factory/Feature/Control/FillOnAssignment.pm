@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Control::FillOnAssignment;
-our $VERSION = '0.012';
+our $VERSION = '0.013';
 
 
 use Moose;
@@ -19,12 +19,12 @@ Form::Factory::Feature::Control::FillOnAssignment - Control gets the value of th
 
 =head1 VERSION
 
-version 0.012
+version 0.013
 
 =head1 SYNOPSIS
 
   package MyApp::Action::Thing;
-our $VERSION = '0.012';
+our $VERSION = '0.013';
 
 
   use Form::Factory::Processor;
@@ -37,7 +37,7 @@ our $VERSION = '0.012';
   );
 
   package Somewhere::Else;
-our $VERSION = '0.012';
+our $VERSION = '0.013';
 
 
 
@@ -74,14 +74,14 @@ sub check_control {
 
 =head2 build_attribute
 
-This modifies the attribute being created to have a C<trigger> that causes the control to gain the value of the action's attribute on set. Unless C<no_warn> is set, this will cause a warning if the "is" setting is not set to "rw".
+This modifies the attribute being created to have a C<trigger> that causes the control to gain the value of the action's attribute on set. Unless C<no_warning> is set, this will cause a warning if the "is" setting is not set to "rw".
 
 =cut
 
 sub build_attribute {
     my ($self, $options, $meta, $name, $attr) = @_;
 
-    unless ($options->{no_warn}) {
+    unless ($options->{no_warning}) {
         Carp::carp("the $name attribute is read-only, but the fill_on_assignment feature is enabled for it, are you sure this is correct?")
             if $attr->{is} eq 'ro' or $attr->{is} eq 'bare';
     }

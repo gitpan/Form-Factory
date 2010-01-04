@@ -1,5 +1,5 @@
 package Form::Factory::Action;
-our $VERSION = '0.012';
+our $VERSION = '0.013';
 
 
 use Moose::Role;
@@ -17,12 +17,12 @@ Form::Factory::Action - Role implemented by actions
 
 =head1 VERSION
 
-version 0.012
+version 0.013
 
 =head2 SYNOPSIS
 
   package MyApp::Action::Foo;
-our $VERSION = '0.012';
+our $VERSION = '0.013';
 
 
   use Form::Factory::Processor;

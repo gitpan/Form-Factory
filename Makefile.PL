@@ -4,21 +4,34 @@ use warnings;
 
 
 
-use ExtUtils::MakeMaker;
+use ExtUtils::MakeMaker 6.11;
 
-WriteMakefile(
-  DISTNAME  => 'Form-Factory',
-  NAME      => 'Form::Factory',
-  AUTHOR    => "Andrew\ Sterling\ Hanenkamp\ \<hanenkamp\@cpan\.org\>",
-  ABSTRACT  => "A\ general\-purpose\ form\ handling\ API",
-  VERSION   => '0.013',
-  EXE_FILES => [ qw() ],
-  (eval { ExtUtils::MakeMaker->VERSION(6.31) } ? (LICENSE => 'perl') : ()),
-  PREREQ_PM    => {
-    "Test::Able" => '0.09',
-    "List::MoreUtils" => '0.22',
-    "Moose" => '0.93',
-  },
-  test => {TESTS => 't/*.t'}
-);
+
+
+my %WriteMakefileArgs = (
+                       'test' => {
+                                   'TESTS' => 't/*.t'
+                                 },
+                       'NAME' => 'Form::Factory',
+                       'DISTNAME' => 'Form-Factory',
+                       'AUTHOR' => 'Andrew Sterling Hanenkamp <hanenkamp@cpan.org>',
+                       'ABSTRACT' => 'A general-purpose form handling API',
+                       'EXE_FILES' => [],
+                       'VERSION' => '0.014',
+                       'LICENSE' => 'perl',
+                       'PREREQ_PM' => {
+                                        'Test::Able' => '0.09',
+                                        'ExtUtils::MakeMaker' => '6.11',
+                                        'List::MoreUtils' => '0.22',
+                                        'Moose' => '0.93'
+                                      }
+                     );
+
+
+delete $WriteMakefileArgs{LICENSE}
+  unless eval { ExtUtils::MakeMaker->VERSION(6.31) };
+
+WriteMakefile(%WriteMakefileArgs);
+
+
 

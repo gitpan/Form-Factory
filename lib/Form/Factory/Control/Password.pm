@@ -1,7 +1,5 @@
 package Form::Factory::Control::Password;
-our $VERSION = '0.013';
-
-
+our $VERSION = '0.014';
 use Moose;
 
 with qw( 
@@ -16,7 +14,7 @@ Form::Factory::Control::Password - the password control
 
 =head1 VERSION
 
-version 0.013
+version 0.014
 
 =head1 SYNOPSIS
 
@@ -27,12 +25,6 @@ version 0.013
 head1 DESCRIPTION
 
 This is a password control. It is similar to a text control, but does not stash anything and has no default value.
-
-=cut
-
-has '+value' => (
-    isa       => 'Str',
-);
 
 =head1 METHODS
 

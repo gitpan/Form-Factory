@@ -1,7 +1,5 @@
 package Form::Factory::Control::Button;
-our $VERSION = '0.013';
-
-
+our $VERSION = '0.014';
 use Moose;
 
 with qw(
@@ -16,7 +14,7 @@ Form::Factory::Control::Button - The button control
 
 =head1 VERSION
 
-version 0.013
+version 0.014
 
 =head1 SYNOPSIS
 
@@ -42,19 +40,8 @@ correctly anymore.
 =cut
 
 has '+true_value' => (
-    isa       => 'Str',
     lazy      => 1,
     default   => sub { shift->label },
-);
-
-=head2 value
-
-See L<Form::Factory::Control::Role::Value>.
-
-=cut
-
-has '+value' => (
-    isa       => 'Str',
 );
 
 =head1 METHODS

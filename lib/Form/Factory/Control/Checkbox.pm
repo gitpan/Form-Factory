@@ -1,7 +1,5 @@
 package Form::Factory::Control::Checkbox;
-our $VERSION = '0.013';
-
-
+our $VERSION = '0.014';
 use Moose;
 
 with qw(
@@ -16,7 +14,7 @@ Form::Factory::Control::Checkbox - the checkbox control
 
 =head1 VERSION
 
-version 0.013
+version 0.014
 
 =head1 SYNOPSIS
 
@@ -32,20 +30,6 @@ version 0.013
 =head1 DESCRIPTION
 
 This represents a toggle button, typically displayed as a checkbox. This control implements L<Form::Factory::Control>, L<Form::Factory::Control::Role::BooleanValue>, L<Form::Factory::Control::Role::Labeled>, L<Form::Factory::Control::Role::ScalarValue>.
-
-=cut
-
-has '+true_value' => (
-    isa       => 'Str',
-);
-
-has '+false_value' => (
-    isa       => 'Str',
-);
-
-has '+value' => (
-    isa       => 'Str',
-);
 
 =head2 stashable_keys
 

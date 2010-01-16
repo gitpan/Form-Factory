@@ -1,7 +1,5 @@
 package Form::Factory;
-our $VERSION = '0.013';
-
-
+our $VERSION = '0.014';
 use Moose;
 
 use Carp ();
@@ -12,7 +10,7 @@ Form::Factory - a general-purpose form handling API
 
 =head1 VERSION
 
-version 0.013
+version 0.014
 
 =head1 SYNOPSIS
 

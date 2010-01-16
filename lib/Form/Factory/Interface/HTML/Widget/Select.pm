@@ -1,7 +1,5 @@
 package Form::Factory::Interface::HTML::Widget::Select;
-our $VERSION = '0.013';
-
-
+our $VERSION = '0.014';
 use Moose;
 
 extends qw( Form::Factory::Interface::HTML::Widget::Element );
@@ -12,7 +10,7 @@ Form::Factory::Interface::HTML::Widget::Select - HTML interface widget helper
 
 =head1 VERSION
 
-version 0.013
+version 0.014
 
 =head1 DESCRIPTION
 
@@ -61,7 +59,7 @@ has available_choices => (
 
 has selected_choices => (
     is        => 'ro',
-    isa       => 'ArrayRef[Str]',
+    isa       => 'ArrayRef',
     required  => 1,
     default   => sub { [] },
 );

@@ -1,7 +1,5 @@
 package Form::Factory::Action::Meta::Attribute::Control;
-our $VERSION = '0.013';
-
-
+our $VERSION = '0.014';
 use Moose::Role;
 
 =head1 NAME
@@ -10,14 +8,11 @@ Form::Factory::Action::Meta::Attribute::Control - Form control attribute-traits
 
 =head1 VERSION
 
-version 0.013
+version 0.014
 
 =head1 SYNOPSIS
 
   package MyApp::Action::Foo;
-our $VERSION = '0.013';
-
-
   use Form::Factory::Processor;
 
   has_control name => (
@@ -175,9 +170,7 @@ it under the same terms as Perl itself.
 =cut
 
 package Moose::Meta::Attribute::Custom::Trait::Form::Control;
-our $VERSION = '0.013';
-
-
+our $VERSION = '0.014';
 sub register_implementation { 'Form::Factory::Action::Meta::Attribute::Control' }
 
 1;

@@ -1,7 +1,5 @@
 package Form::Factory::Action::Meta::Class;
-our $VERSION = '0.013';
-
-
+our $VERSION = '0.014';
 use Moose::Role;
 
 =head1 NAME
@@ -10,14 +8,11 @@ Form::Factory::Action::Meta::Class - The meta-class for form actions
 
 =head1 VERSION
 
-version 0.013
+version 0.014
 
 =head1 SYNOPSIS
 
   package MyApp::Action::Foo;
-our $VERSION = '0.013';
-
-
   use Form::Factory::Processor;
 
 =head1 DESCRIPTION
@@ -56,7 +51,9 @@ sub get_controls {
     my @controls;
 
     if (@control_names) {
-        @controls = grep { $_ } map { $meta->get_attribute($_) } @control_names;
+        @controls = grep { $_ } 
+                     map { $meta->find_attribute_by_name($_) } 
+                           @control_names;
     }
 
     else {

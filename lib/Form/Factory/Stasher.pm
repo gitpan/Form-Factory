@@ -1,7 +1,5 @@
 package Form::Factory::Stasher;
-our $VERSION = '0.013';
-
-
+our $VERSION = '0.014';
 use Moose::Role;
 
 requires qw( stash unstash );
@@ -12,7 +10,7 @@ Form::Factory::Stasher - An object responsible for remembering things
 
 =head1 VERSION
 
-version 0.013
+version 0.014
 
 =head1 DESCRIPTION
 

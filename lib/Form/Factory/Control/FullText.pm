@@ -1,7 +1,5 @@
 package Form::Factory::Control::FullText;
-our $VERSION = '0.013';
-
-
+our $VERSION = '0.014';
 use Moose;
 
 with qw(
@@ -17,7 +15,7 @@ Form::Factory::Control::FullText - The full_text control
 
 =head1 VERSION
 
-version 0.013
+version 0.014
 
 =head1 SYNOPSIS
 
@@ -35,12 +33,6 @@ version 0.013
 This is a multi-line text control.
 
 =head1 ATTRIBUTES
-
-=cut
-
-has '+value' => (
-    isa       => 'Str',
-);
 
 =head2 default_value
 

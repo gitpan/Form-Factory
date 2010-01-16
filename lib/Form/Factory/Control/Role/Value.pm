@@ -1,7 +1,5 @@
 package Form::Factory::Control::Role::Value;
-our $VERSION = '0.013';
-
-
+our $VERSION = '0.014';
 use Moose::Role;
 
 requires qw( current_value has_current_value );
@@ -12,7 +10,7 @@ Form::Factory::Control::Role::Value - controls with values
 
 =head1 VERSION
 
-version 0.013
+version 0.014
 
 =head1 DESCRIPTION
 

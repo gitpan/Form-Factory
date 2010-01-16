@@ -1,7 +1,5 @@
 package Form::Factory::Control::SelectOne;
-our $VERSION = '0.013';
-
-
+our $VERSION = '0.014';
 use Moose;
 
 with qw(
@@ -17,7 +15,7 @@ Form::Factory::Control::SelectOne - A control for selecting a single item
 
 =head1 VERSION
 
-version 0.013
+version 0.014
 
 =head1 SYNOPSIS
 
@@ -39,12 +37,6 @@ A select control that allows a single selection. A list of radio buttons or a dr
 
 =head1 ATTRIBUTES
 
-=cut
-
-has '+value' => (
-    isa       => 'Str',
-);
-
 =head2 default_value
 
 The defautl value of the control.
@@ -53,7 +45,6 @@ The defautl value of the control.
 
 has default_value => (
     is        => 'rw',
-    isa       => 'Str',
     predicate => 'has_default_value',
 );
 

@@ -1,7 +1,5 @@
 package Form::Factory::Control::Text;
-our $VERSION = '0.013';
-
-
+our $VERSION = '0.014';
 use Moose;
 
 with qw( 
@@ -16,7 +14,7 @@ Form::Factory::Control::Text - A single line text field
 
 =head1 VERSION
 
-version 0.013
+version 0.014
 
 =head1 SYNOPSIS
 
@@ -36,13 +34,6 @@ This control implements L<Form::Factory::Control>, L<Form::Factory::Control::Rol
 
 =head1 ATTRIBUTES
 
-=cut
-
-
-has '+value' => (
-    isa       => 'Str',
-);
-
 =head2 default_value
 
 The default value of the control.
@@ -51,7 +42,6 @@ The default value of the control.
 
 has default_value => (
     is        => 'rw',
-    isa       => 'Str',
     predicate => 'has_default_value',
 );
 

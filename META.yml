@@ -2,14 +2,17 @@
 abstract: 'A general-purpose form handling API'
 author:
   - 'Andrew Sterling Hanenkamp <hanenkamp@cpan.org>'
-generated_by: 'Dist::Zilla version 1.093290'
+generated_by: 'Dist::Zilla version 1.100130'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: Form-Factory
 requires:
+  ExtUtils::MakeMaker: 6.11
   List::MoreUtils: 0.22
   Moose: 0.93
   Test::Able: 0.09
-version: 0.013
+resources:
+  repository: http://github.com/zostay/FormFactory
+version: 0.014

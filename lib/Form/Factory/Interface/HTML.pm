@@ -1,7 +1,5 @@
 package Form::Factory::Interface::HTML;
-our $VERSION = '0.013';
-
-
+our $VERSION = '0.014';
 use Moose;
 
 with qw( Form::Factory::Interface );
@@ -24,7 +22,7 @@ Form::Factory::Interface::HTML - Simple HTML form interface
 
 =head1 VERSION
 
-version 0.013
+version 0.014
 
 =head1 SYNOPSIS
 

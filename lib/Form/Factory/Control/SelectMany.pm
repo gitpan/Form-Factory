@@ -1,7 +1,5 @@
 package Form::Factory::Control::SelectMany;
-our $VERSION = '0.013';
-
-
+our $VERSION = '0.014';
 use Moose;
 
 with qw(
@@ -19,7 +17,7 @@ Form::Factory::Control::SelectMany - the multi-select control
 
 =head1 VERSION
 
-version 0.013
+version 0.014
 
 =head1 SYNOPSIS
 
@@ -52,7 +50,7 @@ This is a list of the default selection.
 
 has default_value => (
     is        => 'rw',
-    isa       => 'ArrayRef[Str]',
+    isa       => 'ArrayRef',
     predicate => 'has_default_value',
 );
 

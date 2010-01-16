@@ -1,7 +1,5 @@
 package Form::Factory::Control::Value;
-our $VERSION = '0.013';
-
-
+our $VERSION = '0.014';
 use Moose;
 
 with qw(
@@ -18,7 +16,7 @@ Form::Factory::Control::Value - A read-only value control
 
 =head1 VERSION
 
-version 0.013
+version 0.014
 
 =head1 SYNOPSIS
 
@@ -53,7 +51,6 @@ has is_visible => (
 );
 
 has '+value' => (
-    isa       => 'Str',
     required  => 1,
 );
 

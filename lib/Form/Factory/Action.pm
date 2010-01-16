@@ -1,7 +1,5 @@
 package Form::Factory::Action;
-our $VERSION = '0.013';
-
-
+our $VERSION = '0.014';
 use Moose::Role;
 
 use Carp ();
@@ -17,14 +15,11 @@ Form::Factory::Action - Role implemented by actions
 
 =head1 VERSION
 
-version 0.013
+version 0.014
 
 =head2 SYNOPSIS
 
   package MyApp::Action::Foo;
-our $VERSION = '0.013';
-
-
   use Form::Factory::Processor;
 
   has_control bar => (
@@ -585,6 +580,21 @@ This is the method that actually does the work. It takes no arguments and is exp
 =head1 HELPER METHODS
 
 These methods are primarily intended for internal use.
+
+=head2 set_attribute_from_control
+
+Given the name of a control, this will copy the current value in the control to the attribute.
+
+=cut
+
+sub set_attribute_from_control {
+    my ($self, $name) = @_;
+    my $meta = $self->meta;
+
+    my $control   = $self->control->{$name};
+    my $attribute = $meta->find_attribute_by_name($name);
+    $control->set_attribute_value($self, $attribute);
+}
 
 =head2 set_attributes_from_controls
 

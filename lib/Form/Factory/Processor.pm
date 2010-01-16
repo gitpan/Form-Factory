@@ -1,7 +1,5 @@
 package Form::Factory::Processor;
-our $VERSION = '0.013';
-
-
+our $VERSION = '0.014';
 use Moose;
 use Moose::Exporter;
 
@@ -26,14 +24,11 @@ Form::Factory::Processor - Moos-ish helper for action classes
 
 =head1 VERSION
 
-version 0.013
+version 0.014
 
 =head1 SYNOPSIS
 
   package MyApp::Action::Foo;
-our $VERSION = '0.013';
-
-
   use Form::Factory::Processor;
 
   has_control name => (

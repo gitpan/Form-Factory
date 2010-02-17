@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Control::MatchCode;
-our $VERSION = '0.014';
+our $VERSION = '0.015';
 use Moose;
 
 with qw( 
@@ -17,7 +17,7 @@ Form::Factory::Feature::Control::MatchCode - Greps the control value for correct
 
 =head1 VERSION
 
-version 0.014
+version 0.015
 
 =head1 SYNOPSIS
 
@@ -53,17 +53,11 @@ has code => (
 
 =head2 check_control
 
-Checks to make sure the control does either L<Form::Factory::Control::Role::ScalarValue> or L<Form::Factory::Control::Role::ListValue>.
+No op.
 
 =cut
 
-sub check_control { 
-    my ($self, $control) = @_;
-
-    return if $control->does('Form::Factory::Control::Role::Value');
-
-    Carp::croak("the match_code feature only works with valued controls");
-}
+sub check_control { }
 
 =head2 check
 

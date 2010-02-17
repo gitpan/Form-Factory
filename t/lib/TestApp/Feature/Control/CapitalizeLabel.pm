@@ -1,5 +1,5 @@
 package TestApp::Feature::Control::CapitalizeLabel;
-our $VERSION = '0.014';
+our $VERSION = '0.015';
 use Moose;
 
 with qw(
@@ -16,7 +16,7 @@ sub build_control {
 }
 
 package Form::Factory::Feature::Control::Custom::CapitalizeLabel;
-our $VERSION = '0.014';
+our $VERSION = '0.015';
 sub register_implementation { 'TestApp::Feature::Control::CapitalizeLabel' }
 
 1;

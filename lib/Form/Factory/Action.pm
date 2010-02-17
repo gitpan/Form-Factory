@@ -1,5 +1,5 @@
 package Form::Factory::Action;
-our $VERSION = '0.014';
+our $VERSION = '0.015';
 use Moose::Role;
 
 use Carp ();
@@ -15,7 +15,7 @@ Form::Factory::Action - Role implemented by actions
 
 =head1 VERSION
 
-version 0.014
+version 0.015
 
 =head2 SYNOPSIS
 
@@ -34,7 +34,7 @@ version 0.014
 
 =head1 DESCRIPTION
 
-This is the role implemented by all form actions.
+This is the role implemented by all form actions. Rather than doing so directly, you should use L<Form::Factory::Process> as demonstrated in the L</SYNOPSIS>.
 
 =head1 ATTRIBUTES
 
@@ -191,7 +191,8 @@ sub _build_controls {
         my %control_args = (
             control => $meta_control->control,
             options => {
-                name => $control_name,
+                name   => $control_name,
+                action => $self,
                 ($meta_control->has_documentation 
                     ? (documentation => $meta_control->documentation) : ()),
                 %options,
@@ -241,7 +242,7 @@ sub _build_controls {
 
 Given a C<$moniker> (a key under which to store the information related to this form), this will stash the form's stashable information under that name using the L<Form::Factory::Stasher> associated with the L</form_interface>.
 
-The globals, stashable parts of controls, and the results are stashed. This allows those values to be recovered across requests or between process calls or whatever the implementation requires.
+The globals, values of controls, and the results are stashed. This allows those values to be recovered across requests or between process calls or whatever the implementation requires.
 
 =cut
 
@@ -252,11 +253,7 @@ sub stash {
     my %controls;
     for my $control_name (keys %$controls) {
         my $control = $controls->{ $control_name };
-
-        my $keys = $control->stashable_keys;
-        for my $key (@$keys) {
-            $controls{$control_name}{$key} = $control->$key;
-        }
+        $controls{$control_name}{value} = $control->value;
     }
 
     my %stash = (
@@ -293,11 +290,7 @@ sub unstash {
     for my $control_name (keys %$controls) {
         my $state   = $controls_state->{$control_name};
         my $control = $controls->{$control_name};
-        my $keys    = $control->stashable_keys;
-        for my $key (@$keys) {
-            next unless exists $state->{$key};
-            eval { $control->$key($state->{$key}) };
-        }
+        eval { $control->value($state->{value}) };
     }
 
     $self->results($stash->{results} || Form::Factory::Result::Gathered->new);
@@ -318,10 +311,7 @@ sub clear {
     my $controls       = $self->controls;
     for my $control_name (keys %$controls) {
         my $control = $controls->{ $control_name };
-        my $keys    = $control->stashable_keys;
-        for my $key (@$keys) {
-            delete $control->{$key}; # ugly
-        }
+        delete $control->{value};
     }
 
     $self->results->clear_all;
@@ -361,6 +351,53 @@ sub render {
     return;
 }
 
+=head2 setup_and_render
+
+  $self->setup_and_render(%options);
+
+This performs the most common steps to prepare for a render and render:
+
+=over
+
+=item 1
+
+Unstashes from the given C<moniker>.
+
+=item 2
+
+Adds the given C<globals> to the globals.
+
+=item 3
+
+Renders the action.
+
+=item 4
+
+Clears the results.
+
+=item 5
+
+Stashes what we've done back into the given C<moniker>.
+
+=back
+
+=cut
+
+sub setup_and_render {
+    my ($self, %options) = @_;
+
+    $self->unstash($options{moniker});
+    my %globals = %{ $options{globals} || {} };
+    for my $key (keys %globals) {
+        $self->globals->{$key} = $globals{$key};
+    }
+    $self->render(%options);
+    $self->results->clear_all;
+    $self->stash($options{moniker});
+
+    return;
+}
+
 =head2 render_control
 
   my $control = $action->render_control($name, \%options);
@@ -374,10 +411,13 @@ This method returns the control object that was just rendered.
 sub render_control {
     my ($self, $name, $options, %params) = @_;
 
+    my %options = %{ $options || {} };
+    $options{action} = $self;
+
     $params{results} = $self->results;
 
     my $interface = $self->form_interface;
-    my $control   = $interface->new_control($name => $options);
+    my $control   = $interface->new_control($name => \%options);
 
     $interface->render_control($control, %params);
 
@@ -427,10 +467,13 @@ This method returns the control object that was consumed.
 sub consume_control {
     my ($self, $name, $options, %params) = @_;
 
+    my %options = %{ $options || {} };
+    $options{action} = $self;
+
     $params{results} = $self->results;
 
     my $interface = $self->form_interface;
-    my $control   = $interface->new_control($name => $options);
+    my $control   = $interface->new_control($name => \%options);
 
     $interface->consume_control($control, %params);
 

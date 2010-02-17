@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Control::Required;
-our $VERSION = '0.014';
+our $VERSION = '0.015';
 use Moose;
 
 with qw( 
@@ -17,7 +17,7 @@ Form::Factory::Feature::Control::Required - Makes sure a value is set on a contr
 
 =head1 VERSION
 
-version 0.014
+version 0.015
 
 =head1 SYNOPSIS
 
@@ -36,17 +36,11 @@ Reports a check error if the required value is not set. On scalar value controls
 
 =head2 check_control
 
-Only works with scalar and list valued controls.
+No op.
 
 =cut
 
-sub check_control {
-    my ($self, $control) = @_;
-
-    return if $control->does('Form::Factory::Control::Role::Value');
-
-    Carp::croak("the required feature does not know how to check the value of $control");
-}
+sub check_control { }
 
 =head2 check
 

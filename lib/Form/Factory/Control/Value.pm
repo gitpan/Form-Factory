@@ -1,5 +1,5 @@
 package Form::Factory::Control::Value;
-our $VERSION = '0.014';
+our $VERSION = '0.015';
 use Moose;
 
 with qw(
@@ -16,7 +16,7 @@ Form::Factory::Control::Value - A read-only value control
 
 =head1 VERSION
 
-version 0.014
+version 0.015
 
 =head1 SYNOPSIS
 
@@ -37,6 +37,12 @@ This control implements L<Form::Factory::Control>, L<Form::Factory::Control::Rol
 
 =head1 ATTRIBUTES
 
+=cut
+
+has '+value' => (
+    required  => 1,
+);
+
 =head2 is_visible
 
 Set to true if the read-only value should be displayed.
@@ -49,42 +55,6 @@ has is_visible => (
     required  => 1,
     default   => 0,
 );
-
-has '+value' => (
-    required  => 1,
-);
-
-=head2 stashable_keys
-
-The L</value> is stashed.
-
-=cut
-
-has '+stashable_keys' => (
-    default   => sub { [ qw( value ) ] },
-);
-
-=head1 METHODS
-
-=head2 current_value
-
-Returns the L</value>.
-
-=cut
-
-sub current_value { 
-    my $self = shift;
-    $self->value(@_) if @_;
-    return $self->value;
-};
-
-=head2 has_current_value
-
-We always have a useful value here since we require one to be set.
-
-=cut
-
-sub has_current_value { 1 }
 
 =head1 AUTHOR
 

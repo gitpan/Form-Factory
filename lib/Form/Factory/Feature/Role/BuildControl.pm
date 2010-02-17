@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Role::BuildControl;
-our $VERSION = '0.014';
+our $VERSION = '0.015';
 use Moose::Role;
 
 requires qw( build_control );
@@ -10,7 +10,7 @@ Form::Factory::Feature::Role::BuildControl - control features that modify contro
 
 =head1 VERSION
 
-version 0.014
+version 0.015
 
 =head1 SYNOPSIS
 

@@ -1,5 +1,5 @@
 package Form::Factory::Control::Button;
-our $VERSION = '0.014';
+our $VERSION = '0.015';
 use Moose;
 
 with qw(
@@ -14,7 +14,7 @@ Form::Factory::Control::Button - The button control
 
 =head1 VERSION
 
-version 0.014
+version 0.015
 
 =head1 SYNOPSIS
 
@@ -30,6 +30,18 @@ version 0.014
 A control representing a submit button. This control implements L<Form::Factory::Control>, L<Form::Factory::Control::Role::BooleanValue>, L<Form::Factory::Control::Role::Labeled>, L<Form::Factory::Control::Role::ScalarValue>.
 
 =head1 ATTRIBUTES
+
+=cut
+
+has '+value' => (
+    isa       => 'Str',
+);
+
+has '+default_value' => (
+    isa       => 'Str',
+    lazy      => 1,
+    default   => sub { shift->label },
+);
 
 =head2 true_value
 
@@ -53,42 +65,6 @@ Boolean values default to C<Bool>.
 =cut
 
 use constant default_isa => 'Str';
-
-=head2 current_value
-
-The current value expects the L</true_value> to be passed to set the L<Form::Factory::Control::Role::BooleanValue/is_true> attribute. This method returns either the L</true_value> or L<Form::Factory::Control::Role::BooleanValue/false_value>.
-
-If the control is neither true nor false, it returns C<undef>.
-
-=cut
-
-sub current_value { 
-    my $self = shift;
-
-    if (@_) {
-        $self->value(@_);
-    }
-
-    # blow off these warnings rather than test for them
-    no warnings 'uninitialized';
-
-    return $self->true_value  if $self->true_value  eq $self->value;
-    return $self->false_value if $self->false_value eq $self->value;
-    return;
-}
-
-=head2 has_current_value
-
-If the value is true or false, it has a current value. Otherwise, it does not.
-
-=cut
-
-sub has_current_value {
-    my $self = shift;
-
-    return ($self->true_value  eq $self->value
-         || $self->false_value eq $self->value);
-}
 
 =head1 AUTHOR
 

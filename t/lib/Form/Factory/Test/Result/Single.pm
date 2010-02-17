@@ -1,5 +1,5 @@
 package Form::Factory::Test::Result::Single;
-our $VERSION = '0.014';
+our $VERSION = '0.015';
 use Test::Able;
 
 with qw( Form::Factory::Test::Result );

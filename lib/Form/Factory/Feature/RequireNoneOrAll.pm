@@ -1,5 +1,5 @@
 package Form::Factory::Feature::RequireNoneOrAll;
-our $VERSION = '0.014';
+our $VERSION = '0.015';
 use Moose;
 
 use Moose::Util qw( english_list );
@@ -17,7 +17,7 @@ Form::Factory::Feature::RequireNoneOrAll - if one control has a value, all shoul
 
 =head1 VERSION
 
-version 0.014
+version 0.015
 
 =head1 SYNOPSIS
 
@@ -94,9 +94,6 @@ sub check {
 
         CONTROL: for my $name (@$control_names) {
             my $control = $action->controls->{$name};
-
-            Carp::croak("require_none_or_all does not know how to check values on $name")
-                unless $control->does('Form::Factory::Control::Role::Value');
 
             my $has_current_value = $control->has_current_value;
             $has_a_value        ||= $has_current_value;

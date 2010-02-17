@@ -1,5 +1,5 @@
 package TestApp::Action::CapitalizeLabel;
-our $VERSION = '0.014';
+our $VERSION = '0.015';
 use Form::Factory::Processor;
 
 use TestApp::Feature::Control::CapitalizeLabel;

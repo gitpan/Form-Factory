@@ -25,7 +25,6 @@ lib/Form/Factory/Control/Role/ListValue.pm
 lib/Form/Factory/Control/Role/MultiLine.pm
 lib/Form/Factory/Control/Role/PresetValue.pm
 lib/Form/Factory/Control/Role/ScalarValue.pm
-lib/Form/Factory/Control/Role/Value.pm
 lib/Form/Factory/Control/SelectMany.pm
 lib/Form/Factory/Control/SelectOne.pm
 lib/Form/Factory/Control/Text.pm
@@ -45,6 +44,7 @@ lib/Form/Factory/Feature/Role/BuildControl.pm
 lib/Form/Factory/Feature/Role/Check.pm
 lib/Form/Factory/Feature/Role/Clean.pm
 lib/Form/Factory/Feature/Role/Control.pm
+lib/Form/Factory/Feature/Role/ControlValueConverter.pm
 lib/Form/Factory/Feature/Role/CustomControlMessage.pm
 lib/Form/Factory/Feature/Role/CustomMessage.pm
 lib/Form/Factory/Feature/Role/PostProcess.pm
@@ -70,7 +70,6 @@ lib/Form/Factory/Result/Gathered.pm
 lib/Form/Factory/Result/Single.pm
 lib/Form/Factory/Stasher.pm
 lib/Form/Factory/Stasher/Memory.pm
-t/lib/Form/Factory/Test.pm
 t/lib/Form/Factory/Test/Action.pm
 t/lib/Form/Factory/Test/Action/AllControls.pm
 t/lib/Form/Factory/Test/Action/Basic.pm

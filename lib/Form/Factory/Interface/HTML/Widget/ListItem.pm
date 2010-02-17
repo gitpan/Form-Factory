@@ -1,5 +1,5 @@
 package Form::Factory::Interface::HTML::Widget::ListItem;
-our $VERSION = '0.014';
+our $VERSION = '0.015';
 use Moose;
 
 extends qw( Form::Factory::Interface::HTML::Widget::Element );
@@ -10,7 +10,7 @@ Form::Factory::Interface::HTML::Widget::ListItem - HTML interface widget helper
 
 =head1 VERSION
 
-version 0.014
+version 0.015
 
 =head1 DESCRIPTION
 

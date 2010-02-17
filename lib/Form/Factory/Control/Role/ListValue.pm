@@ -1,8 +1,6 @@
 package Form::Factory::Control::Role::ListValue;
-our $VERSION = '0.014';
+our $VERSION = '0.015';
 use Moose::Role;
-
-with qw( Form::Factory::Control::Role::Value );
 
 excludes qw( 
     Form::Factory::Control::Role::BooleanValue
@@ -15,7 +13,7 @@ Form::Factory::Control::Role::ListValue - list-valued controls
 
 =head1 VERSION
 
-version 0.014
+version 0.015
 
 =head1 DESCRIPTION
 
@@ -30,14 +28,6 @@ List valued controls are "ArrayRef[Str]" by default.
 =cut
 
 use constant default_isa => 'ArrayRef[Str]';
-
-=head2 current_values
-
-This is a synonym for C<current_value>.
-
-=cut
-
-sub current_values { shift->current_value(@_) }
 
 =head1 AUTHOR
 

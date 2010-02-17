@@ -1,5 +1,5 @@
 package Form::Factory::Stasher::Memory;
-our $VERSION = '0.014';
+our $VERSION = '0.015';
 use Moose;
 
 with qw( Form::Factory::Stasher );
@@ -10,7 +10,7 @@ Form::Factory::Stasher::Memory - Remember things in a Perl hash
 
 =head1 VERSION
 
-version 0.014
+version 0.015
 
 =head1 SYNOPSIS
 

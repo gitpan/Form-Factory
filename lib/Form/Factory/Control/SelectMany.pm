@@ -1,5 +1,5 @@
 package Form::Factory::Control::SelectMany;
-our $VERSION = '0.014';
+our $VERSION = '0.015';
 use Moose;
 
 with qw(
@@ -17,7 +17,7 @@ Form::Factory::Control::SelectMany - the multi-select control
 
 =head1 VERSION
 
-version 0.014
+version 0.015
 
 =head1 SYNOPSIS
 
@@ -40,31 +40,26 @@ A select many can be displayed as a multi-select list box or a list of checkboxe
 
 This control implements L<Form::Factory::Control>, L<Form::Factory::Control::Role::AvailableChoices>, L<Form::Factory::Control::Role::Labeled>, L<Form::Factory::Control::Role::ListValue>.
 
-=head1 ATTRIBUTES
-
-=head2 default_value
-
-This is a list of the default selection.
-
 =cut
 
-has default_value => (
-    is        => 'rw',
-    isa       => 'ArrayRef',
-    predicate => 'has_default_value',
+has '+value' => (
+    isa       => 'ArrayRef[Str]',
 );
 
-=head2 stashable_keys
-
-The L</selected_choices> are stashed.
-
-=cut
-
-has '+stashable_keys' => (
-    default   => sub { [ qw( selected_choices ) ] },
+has '+default_value' => (
+    isa       => 'ArrayRef[Str]',
+    default   => sub { [] },
 );
 
 =head1 METHODS
+
+=head2 current_values
+
+This is a synonym for C<current_value>.
+
+=cut
+
+sub current_values { shift->current_value(@_) }
 
 =head2 selected_choices
 
@@ -94,21 +89,6 @@ sub default_selected_choices { shift->default_value(@_) }
 
 sub has_default_selected_choices { shift->has_default_value(@_) }
 
-=head2 current_value
-
-Returns the L</value>, if set. Failing that, it returns the L</default_value>, if set. Failing that, it returns an empty list.
-
-=cut
-
-sub current_value {
-    my $self = shift;
-    $self->value(@_) if @_;
-    return $self->has_value         ? $self->value
-         : $self->has_default_value ? $self->default_value
-         :                            []
-         ;
-}
-
 =head2 is_choice_selected
 
   for my $choice (@{ $self->available_choices }) {
@@ -129,16 +109,16 @@ sub is_choice_selected {
 
 =head2 has_current_value
 
-If more than zero values have been selected, we have a useful value.
+It has a current value if one or more values are selected.
 
 =cut
 
-sub has_current_value {
+around has_current_value => sub {
+    my $next = shift;
     my $self = shift;
-
-    my $values = $self->current_value;
-    return scalar(@$values) > 0;
-}
+    return ($self->has_value || $self->has_default_value) 
+        && scalar(@{ $self->current_value }) > 0;
+};
 
 =head1 AUTHOR
 

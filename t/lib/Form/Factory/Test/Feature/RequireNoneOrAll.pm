@@ -1,5 +1,5 @@
 package Form::Factory::Test::Feature::RequireNoneOrAll;
-our $VERSION = '0.014';
+our $VERSION = '0.015';
 use Test::Able;
 
 use Test::More;

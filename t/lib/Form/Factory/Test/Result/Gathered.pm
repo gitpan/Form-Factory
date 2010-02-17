@@ -1,5 +1,5 @@
 package Form::Factory::Test::Result::Gathered;
-our $VERSION = '0.014';
+our $VERSION = '0.015';
 use Test::Able;
 use Test::More;
 

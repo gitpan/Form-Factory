@@ -1,5 +1,5 @@
 package Form::Factory::Control::Text;
-our $VERSION = '0.014';
+our $VERSION = '0.015';
 use Moose;
 
 with qw( 
@@ -14,7 +14,7 @@ Form::Factory::Control::Text - A single line text field
 
 =head1 VERSION
 
-version 0.014
+version 0.015
 
 =head1 SYNOPSIS
 
@@ -32,55 +32,32 @@ A regular text box.
 
 This control implements L<Form::Factory::Control>, L<Form::Factory::Control::Role::Labeled>, and L<Form::Factory::Control::Role::ScalarValue>.
 
-=head1 ATTRIBUTES
-
-=head2 default_value
-
-The default value of the control.
-
 =cut
 
-has default_value => (
-    is        => 'rw',
-    predicate => 'has_default_value',
+has '+value' => (
+    isa       => 'Str',
 );
 
-=head2 stashable_keys
-
-The L</value> is stashed.
-
-=cut
-
-has '+stashable_keys' => (
-    default   => sub { [ qw( value ) ] },
+has '+default_value' => (
+    isa       => 'Str',
+    default   => '',
 );
 
 =head1 METHODS
 
-=head2 current_value
-
-If the L</value> is set, use that. If the L</default_value> is set use that. Otherwise, return the empty string.
-
-=cut
-
-sub current_value {
-    my $self = shift;
-    $self->value(shift) if @_;
-    return $self->has_value         ? $self->value
-         : $self->has_default_value ? $self->default_value
-         :                            '';
-}
-
 =head2 has_current_value
 
-We have a useful current value when it is defined and the length of the string is greater than zero.
+We have a current value if it is defined and has a non-zero string length.
 
 =cut
 
-sub has_current_value {
+around has_current_value => sub {
+    my $next = shift;
     my $self = shift;
-    return length($self->current_value) > 0;
-}
+
+    return ($self->has_value || $self->has_default_value)
+        && length($self->current_value) > 0;
+};
 
 =head1 AUTHOR
 

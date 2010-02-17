@@ -1,5 +1,5 @@
 package Form::Factory::Interface::CLI;
-our $VERSION = '0.014';
+our $VERSION = '0.015';
 use Moose;
 
 with qw( Form::Factory::Interface );
@@ -12,7 +12,7 @@ Form::Factory::Interface::CLI - Command-line interface builder for form factory
 
 =head1 VERSION
 
-version 0.014
+version 0.015
 
 =head1 SYNOPSIS
 
@@ -143,9 +143,6 @@ Consumes the command-line arguments and files specified on the command-line to f
 
 sub consume_control {
     my ($self, $control, %options) = @_;
-
-    Carp::croak("CLI interface does not know how to consume values for $control")
-        unless $control->does('Form::Factory::Control::Role::Value');
 
     my @argv = @{ $self->get_args->($self) };
     my ($fetch, @values);

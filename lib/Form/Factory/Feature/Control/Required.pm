@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Control::Required;
-our $VERSION = '0.015';
+our $VERSION = '0.016';
 use Moose;
 
 with qw( 
@@ -17,7 +17,7 @@ Form::Factory::Feature::Control::Required - Makes sure a value is set on a contr
 
 =head1 VERSION
 
-version 0.015
+version 0.016
 
 =head1 SYNOPSIS
 

@@ -1,5 +1,5 @@
 package Form::Factory::Control;
-our $VERSION = '0.015';
+our $VERSION = '0.016';
 use Moose::Role;
 
 use Form::Factory::Control::Choice;
@@ -13,7 +13,7 @@ Form::Factory::Control - high-level API for working with form controls
 
 =head1 VERSION
 
-version 0.015
+version 0.016
 
 =head1 SYNOPSIS
 
@@ -240,7 +240,7 @@ sub convert_value_to_control {
     my ($self, $value) = @_;
 
     for my $feature (@{ $self->features }) {
-        next unless $feature->does('Form::Factory::Feature::Role::ControlValueConvert');
+        next unless $feature->does('Form::Factory::Feature::Role::ControlValueConverter');
 
         $value = $feature->value_to_control($value);
     }
@@ -268,7 +268,7 @@ sub convert_control_to_value {
     my ($self, $value) = @_;
 
     for my $feature (@{ $self->features }) {
-        next unless $feature->does('Form::Factory::Feature::Role::ControlValueConvert');
+        next unless $feature->does('Form::Factory::Feature::Role::ControlValueConverter');
 
         $value = $feature->control_to_value($value);
     }

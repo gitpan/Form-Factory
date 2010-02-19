@@ -47,6 +47,7 @@ lib/Form/Factory/Feature/Role/Control.pm
 lib/Form/Factory/Feature/Role/ControlValueConverter.pm
 lib/Form/Factory/Feature/Role/CustomControlMessage.pm
 lib/Form/Factory/Feature/Role/CustomMessage.pm
+lib/Form/Factory/Feature/Role/InitializeControl.pm
 lib/Form/Factory/Feature/Role/PostProcess.pm
 lib/Form/Factory/Feature/Role/PreProcess.pm
 lib/Form/Factory/Interface.pm
@@ -75,6 +76,7 @@ t/lib/Form/Factory/Test/Action/AllControls.pm
 t/lib/Form/Factory/Test/Action/Basic.pm
 t/lib/Form/Factory/Test/Action/Controls.pm
 t/lib/Form/Factory/Test/Action/Inheritance.pm
+t/lib/Form/Factory/Test/Action/ValueConversion.pm
 t/lib/Form/Factory/Test/CustomClassNames.pm
 t/lib/Form/Factory/Test/Feature.pm
 t/lib/Form/Factory/Test/Feature/Control/BuildControl.pm
@@ -96,10 +98,12 @@ t/lib/TestApp/Action/EveryControl.pm
 t/lib/TestApp/Action/Featureful.pm
 t/lib/TestApp/Action/Middle.pm
 t/lib/TestApp/Action/RequireNoneOrAll.pm
+t/lib/TestApp/Action/SplitValue.pm
 t/lib/TestApp/Action/Top.pm
 t/lib/TestApp/Control/Null.pm
 t/lib/TestApp/Feature/Control/CapitalizeLabel.pm
 t/lib/TestApp/Feature/Control/Null.pm
+t/lib/TestApp/Feature/Control/SplitValue.pm
 t/lib/TestApp/Feature/Null.pm
 t/lib/TestApp/Interface/Null.pm
 t/release-pod-coverage.t

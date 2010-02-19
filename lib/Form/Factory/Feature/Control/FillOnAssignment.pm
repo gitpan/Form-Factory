@@ -1,10 +1,11 @@
 package Form::Factory::Feature::Control::FillOnAssignment;
-our $VERSION = '0.015';
+our $VERSION = '0.016';
 use Moose;
 
 with qw(
     Form::Factory::Feature
     Form::Factory::Feature::Role::BuildAttribute
+    Form::Factory::Feature::Role::InitializeControl
     Form::Factory::Feature::Role::Control
 );
 
@@ -16,7 +17,7 @@ Form::Factory::Feature::Control::FillOnAssignment - Control gets the value of th
 
 =head1 VERSION
 
-version 0.015
+version 0.016
 
 =head1 SYNOPSIS
 
@@ -79,13 +80,13 @@ sub build_attribute {
     };
 }
 
-=head2 BUILD
+=head2 initialize_control
 
-After building the feature, this will set the default value of the control to the value currently held by the action attribute.
+After the control is initialized, this will set the default value of the control to the value currently held by the action attribute.
 
 =cut
 
-sub BUILD {
+sub initialize_control {
     my $self    = shift;
     my $action  = $self->action;
     my $control = $self->control;

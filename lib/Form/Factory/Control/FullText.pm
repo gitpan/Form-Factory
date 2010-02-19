@@ -1,5 +1,5 @@
 package Form::Factory::Control::FullText;
-our $VERSION = '0.015';
+our $VERSION = '0.016';
 use Moose;
 
 with qw(
@@ -15,7 +15,7 @@ Form::Factory::Control::FullText - The full_text control
 
 =head1 VERSION
 
-version 0.015
+version 0.016
 
 =head1 SYNOPSIS
 

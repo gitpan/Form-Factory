@@ -1,5 +1,5 @@
 package TestApp::Feature::Control::SplitValue;
-our $VERSION = '0.016';
+our $VERSION = '0.017';
 use Moose;
 
 with qw( 
@@ -39,7 +39,7 @@ sub control_to_value {
 }
 
 package Form::Factory::Feature::Control::Custom::SplitValue;
-our $VERSION = '0.016';
+our $VERSION = '0.017';
 sub register_implementation { 'TestApp::Feature::Control::SplitValue' }
 
 1;

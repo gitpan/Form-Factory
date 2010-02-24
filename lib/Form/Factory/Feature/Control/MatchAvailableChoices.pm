@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Control::MatchAvailableChoices;
-our $VERSION = '0.016';
+our $VERSION = '0.017';
 use Moose;
 
 with qw( 
@@ -17,7 +17,7 @@ Form::Factory::Feature::Control::MatchAvailableChoices - Check for choice availa
 
 =head1 VERSION
 
-version 0.016
+version 0.017
 
 =head1 SYNOPSIS
 

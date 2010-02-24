@@ -1,5 +1,5 @@
 package Form::Factory::Test::Feature::Control::BuildControl;
-our $VERSION = '0.016';
+our $VERSION = '0.017';
 use Test::Able;
 
 use Test::More;

@@ -1,5 +1,5 @@
 package Form::Factory::Control::Button;
-our $VERSION = '0.016';
+our $VERSION = '0.017';
 use Moose;
 
 with qw(
@@ -14,7 +14,7 @@ Form::Factory::Control::Button - The button control
 
 =head1 VERSION
 
-version 0.016
+version 0.017
 
 =head1 SYNOPSIS
 

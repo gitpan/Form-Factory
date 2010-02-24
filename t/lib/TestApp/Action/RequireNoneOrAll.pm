@@ -1,5 +1,5 @@
 package TestApp::Action::RequireNoneOrAll;
-our $VERSION = '0.016';
+our $VERSION = '0.017';
 use Form::Factory::Processor;
 
 use_feature require_none_or_all => {

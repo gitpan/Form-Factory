@@ -1,5 +1,5 @@
 package TestApp::Action::Featureful;
-our $VERSION = '0.016';
+our $VERSION = '0.017';
 use Form::Factory::Processor;
 
 has_control fill_on_assignment => (

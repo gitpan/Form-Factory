@@ -1,5 +1,5 @@
 package Form::Factory::Control::Role::PresetValue;
-our $VERSION = '0.016';
+our $VERSION = '0.017';
 use Moose::Role;
 
 =head1 NAME
@@ -8,7 +8,7 @@ Form::Factory::Control::Role::PresetValue - controls with preset values
 
 =head1 VERSION
 
-version 0.016
+version 0.017
 
 =head1 DESCRIPTION
 

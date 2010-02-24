@@ -1,5 +1,5 @@
 package TestApp::Action::Middle;
-our $VERSION = '0.016';
+our $VERSION = '0.017';
 use Form::Factory::Processor;
 
 extends qw( TestApp::Action::Top );

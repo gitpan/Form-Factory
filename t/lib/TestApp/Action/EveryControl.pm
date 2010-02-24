@@ -1,5 +1,5 @@
 package TestApp::Action::EveryControl;
-our $VERSION = '0.016';
+our $VERSION = '0.017';
 use Form::Factory::Processor;
 
 has_control button => (

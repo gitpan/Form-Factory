@@ -1,5 +1,5 @@
 package TestApp::Action::SplitValue;
-our $VERSION = '0.016';
+our $VERSION = '0.017';
 use Form::Factory::Processor;
 
 use TestApp::Feature::Control::SplitValue;

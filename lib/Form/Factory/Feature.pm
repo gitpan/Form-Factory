@@ -1,5 +1,5 @@
 package Form::Factory::Feature;
-our $VERSION = '0.016';
+our $VERSION = '0.017';
 use Moose::Role;
 
 use Scalar::Util qw( blessed );
@@ -10,7 +10,7 @@ Form::Factory::Feature - Interface for objects that modify how actions work
 
 =head1 VERSION
 
-version 0.016
+version 0.017
 
 =head1 SYNOPSIS
 

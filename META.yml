@@ -16,4 +16,4 @@ requires:
   Test::Able::Runner: 1.00
 resources:
   repository: http://github.com/zostay/FormFactory
-version: 0.016
+version: 0.017

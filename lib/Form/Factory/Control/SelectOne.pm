@@ -1,5 +1,5 @@
 package Form::Factory::Control::SelectOne;
-our $VERSION = '0.016';
+our $VERSION = '0.017';
 use Moose;
 
 with qw(
@@ -15,7 +15,7 @@ Form::Factory::Control::SelectOne - A control for selecting a single item
 
 =head1 VERSION
 
-version 0.016
+version 0.017
 
 =head1 SYNOPSIS
 

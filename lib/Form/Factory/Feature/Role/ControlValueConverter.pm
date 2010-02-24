@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Role::ControlValueConverter;
-our $VERSION = '0.016';
+our $VERSION = '0.017';
 use Moose::Role;
 
 with qw( Form::Factory::Feature::Role::Control );
@@ -12,7 +12,7 @@ Form::Factory::Feature::Role::ControlValueConverter - form features that convert
 
 =head1 VERSION
 
-version 0.016
+version 0.017
 
 =head1 SYNOPSIS
 

@@ -1,5 +1,5 @@
 package Form::Factory::Interface::CLI;
-our $VERSION = '0.016';
+our $VERSION = '0.017';
 use Moose;
 
 with qw( Form::Factory::Interface );
@@ -12,7 +12,7 @@ Form::Factory::Interface::CLI - Command-line interface builder for form factory
 
 =head1 VERSION
 
-version 0.016
+version 0.017
 
 =head1 SYNOPSIS
 

@@ -1,5 +1,5 @@
 package Form::Factory::Test::Feature;
-our $VERSION = '0.017';
+our $VERSION = '0.018';
 use Test::Able::Role;
 
 use Test::More;

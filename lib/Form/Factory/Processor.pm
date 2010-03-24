@@ -1,5 +1,5 @@
 package Form::Factory::Processor;
-our $VERSION = '0.017';
+our $VERSION = '0.018';
 use Moose;
 use Moose::Exporter;
 
@@ -24,7 +24,7 @@ Form::Factory::Processor - Moos-ish helper for action classes
 
 =head1 VERSION
 
-version 0.017
+version 0.018
 
 =head1 SYNOPSIS
 
@@ -178,7 +178,7 @@ B<DO NOT> use the C<required> attribute option on controls. If you try to do so,
 
 =cut
 
-sub has_control {
+sub _setup_control_defaults {
     my $meta = shift;
     my $name = shift;
     my $args = @_ == 1 ? shift : { @_ };
@@ -205,6 +205,12 @@ sub has_control {
     }
 
     $args->{__meta} = $meta;
+
+    return ($meta, $name, $args);
+}
+
+sub has_control {
+    my ($meta, $name, $args) = _setup_control_defaults(@_);
     $meta->add_attribute( $name => $args );
 }
 

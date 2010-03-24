@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Role::InitializeControl;
-our $VERSION = '0.017';
+our $VERSION = '0.018';
 use Moose::Role;
 
 requires qw( initialize_control );
@@ -10,7 +10,7 @@ Form::Factory::Feature::Role::InitializeControl - control features that work on 
 
 =head1 VERSION
 
-version 0.017
+version 0.018
 
 =head1 SYNOPSIS
 

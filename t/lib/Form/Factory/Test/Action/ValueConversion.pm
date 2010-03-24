@@ -1,5 +1,5 @@
 package Form::Factory::Test::Action::ValueConversion;
-our $VERSION = '0.017';
+our $VERSION = '0.018';
 use Test::Able;
 use Test::More;
 

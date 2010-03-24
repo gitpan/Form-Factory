@@ -1,5 +1,5 @@
 package Form::Factory::Test::Action::Controls;
-our $VERSION = '0.017';
+our $VERSION = '0.018';
 use Test::Able;
 use Test::More;
 use Test::Moose;

@@ -11,6 +11,8 @@ lib/Form/Factory.pm
 lib/Form/Factory/Action.pm
 lib/Form/Factory/Action/Meta/Attribute/Control.pm
 lib/Form/Factory/Action/Meta/Class.pm
+lib/Form/Factory/Action/Meta/Role.pm
+lib/Form/Factory/Action/Role.pm
 lib/Form/Factory/Control.pm
 lib/Form/Factory/Control/Button.pm
 lib/Form/Factory/Control/Checkbox.pm
@@ -66,6 +68,7 @@ lib/Form/Factory/Interface/HTML/Widget/Textarea.pm
 lib/Form/Factory/Message.pm
 lib/Form/Factory/Processor.pm
 lib/Form/Factory/Processor/DeferredValue.pm
+lib/Form/Factory/Processor/Role.pm
 lib/Form/Factory/Result.pm
 lib/Form/Factory/Result/Gathered.pm
 lib/Form/Factory/Result/Single.pm
@@ -76,6 +79,7 @@ t/lib/Form/Factory/Test/Action/AllControls.pm
 t/lib/Form/Factory/Test/Action/Basic.pm
 t/lib/Form/Factory/Test/Action/Controls.pm
 t/lib/Form/Factory/Test/Action/Inheritance.pm
+t/lib/Form/Factory/Test/Action/RoleComposition.pm
 t/lib/Form/Factory/Test/Action/ValueConversion.pm
 t/lib/Form/Factory/Test/CustomClassNames.pm
 t/lib/Form/Factory/Test/Feature.pm
@@ -94,10 +98,13 @@ t/lib/Form/Factory/Test/Result/Single.pm
 t/lib/TestApp/Action/Basic.pm
 t/lib/TestApp/Action/Bottom.pm
 t/lib/TestApp/Action/CapitalizeLabel.pm
+t/lib/TestApp/Action/Composed.pm
 t/lib/TestApp/Action/EveryControl.pm
 t/lib/TestApp/Action/Featureful.pm
 t/lib/TestApp/Action/Middle.pm
 t/lib/TestApp/Action/RequireNoneOrAll.pm
+t/lib/TestApp/Action/Role/PartOne.pm
+t/lib/TestApp/Action/Role/PartTwo.pm
 t/lib/TestApp/Action/SplitValue.pm
 t/lib/TestApp/Action/Top.pm
 t/lib/TestApp/Control/Null.pm

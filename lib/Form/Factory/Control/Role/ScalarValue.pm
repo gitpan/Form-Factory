@@ -1,5 +1,5 @@
 package Form::Factory::Control::Role::ScalarValue;
-our $VERSION = '0.017';
+our $VERSION = '0.018';
 use Moose::Role;
 
 excludes qw( 
@@ -13,7 +13,7 @@ Form::Factory::Control::Role::ScalarValue - scalar valued controls
 
 =head1 VERSION
 
-version 0.017
+version 0.018
 
 =head1 DESCRIPTION
 

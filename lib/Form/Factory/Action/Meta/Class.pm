@@ -1,14 +1,14 @@
 package Form::Factory::Action::Meta::Class;
-our $VERSION = '0.017';
+our $VERSION = '0.018';
 use Moose::Role;
 
 =head1 NAME
 
-Form::Factory::Action::Meta::Class - The meta-class for form actions
+Form::Factory::Action::Meta::Class - The meta-class role for form actions
 
 =head1 VERSION
 
-version 0.017
+version 0.018
 
 =head1 SYNOPSIS
 
@@ -23,7 +23,7 @@ All form actions have this role attached to its meta-class.
 
 =head2 features
 
-This is a hash of features. The keys are the short name of the feature to attach and the value is a hash of options ot pass to the feature's constructor on instantiation.
+This is a hash of features. The keys are the short name of the feature to attach and the value is a hash of options to pass to the feature's constructor on instantiation.
 
 =cut
 
@@ -69,14 +69,15 @@ sub get_controls {
 
   my $features = $action->meta->get_all_features;
 
-Returns all the feature specs for teh form. This includes all inherited features as well. These are returned in the same format as the L</features> attribute.
+Returns all the feature specs for the form. This includes all inherited features and features configured in implemented roles as well. These are returned in the same format as the L</features> attribute.
 
 =cut
 
 sub get_all_features {
     my $meta = shift;
-
     my %all_features;
+
+    # For all the classes implemented, find the features we use
     for my $class (reverse $meta->linearized_isa) {
         my $other_meta = $meta->initialize($class);
 
@@ -87,6 +88,20 @@ sub get_all_features {
         # Make sure inherited features don't clobber each other
         while (my ($name, $feature_config) = each %{ $other_meta->features }) {
             my $full_name = join('#', $name, $other_meta->name);
+            $all_features{$full_name} = $feature_config;
+        }
+    }
+
+    # Now, do the same for the roles we implement as well
+    for my $role ($meta->calculate_all_roles) {
+
+        next unless $role->can('meta');
+        next unless $role->meta->can('does_role');
+        next unless $role->meta->does_role('Form::Factory::Action::Meta::Role');
+
+        # Make sure these don't clobber the inherited features
+        while (my ($name, $feature_config) = each %{ $role->features }) {
+            my $full_name = join('#', $name, $role->name);
             $all_features{$full_name} = $feature_config;
         }
     }

@@ -1,5 +1,5 @@
 package TestApp::Action::Basic;
-our $VERSION = '0.017';
+our $VERSION = '0.018';
 use Form::Factory::Processor;
 
 my $counter = 0;

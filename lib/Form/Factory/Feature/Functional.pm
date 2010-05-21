@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Functional;
-our $VERSION = '0.018';
+our $VERSION = '0.019';
 use Moose;
 
 with qw( 
@@ -16,7 +16,7 @@ Form::Factory::Feature::Functional - A generic feature for actions
 
 =head1 VERSION
 
-version 0.018
+version 0.019
 
 =head1 SYNOPSIS
 

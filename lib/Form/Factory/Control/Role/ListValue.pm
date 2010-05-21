@@ -1,5 +1,5 @@
 package Form::Factory::Control::Role::ListValue;
-our $VERSION = '0.018';
+our $VERSION = '0.019';
 use Moose::Role;
 
 excludes qw( 
@@ -13,7 +13,7 @@ Form::Factory::Control::Role::ListValue - list-valued controls
 
 =head1 VERSION
 
-version 0.018
+version 0.019
 
 =head1 DESCRIPTION
 

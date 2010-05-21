@@ -1,5 +1,5 @@
 package Form::Factory::Feature::RequireNoneOrAll;
-our $VERSION = '0.018';
+our $VERSION = '0.019';
 use Moose;
 
 use Moose::Util qw( english_list );
@@ -17,7 +17,7 @@ Form::Factory::Feature::RequireNoneOrAll - if one control has a value, all shoul
 
 =head1 VERSION
 
-version 0.018
+version 0.019
 
 =head1 SYNOPSIS
 

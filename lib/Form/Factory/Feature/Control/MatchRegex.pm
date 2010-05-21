@@ -1,5 +1,5 @@
 package Form::Factory::Feature::Control::MatchRegex;
-our $VERSION = '0.018';
+our $VERSION = '0.019';
 use Moose;
 
 with qw( 
@@ -17,7 +17,7 @@ Form::Factory::Feature::Control::MatchRegex - Match a control value against a re
 
 =head1 VERSION
 
-version 0.018
+version 0.019
 
 =head1 SYNOPSIS
 
@@ -45,7 +45,7 @@ The regular expression to use.
 
 has regex => (
     is        => 'ro',
-    isa       => 'Regexp',
+    isa       => 'RegexpRef',
     required  => 1,
 );
 

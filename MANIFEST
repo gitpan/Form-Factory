@@ -41,6 +41,7 @@ lib/Form/Factory/Feature/Control/Required.pm
 lib/Form/Factory/Feature/Control/Trim.pm
 lib/Form/Factory/Feature/Functional.pm
 lib/Form/Factory/Feature/RequireNoneOrAll.pm
+lib/Form/Factory/Feature/Role/.PreRender.pm.swp
 lib/Form/Factory/Feature/Role/BuildAttribute.pm
 lib/Form/Factory/Feature/Role/BuildControl.pm
 lib/Form/Factory/Feature/Role/Check.pm
@@ -67,6 +68,8 @@ lib/Form/Factory/Interface/HTML/Widget/Span.pm
 lib/Form/Factory/Interface/HTML/Widget/Textarea.pm
 lib/Form/Factory/Message.pm
 lib/Form/Factory/Processor.pm
+lib/Form/Factory/Processor/.DeferredValue.pm.swp
+lib/Form/Factory/Processor/.StartTimer.pm.swp
 lib/Form/Factory/Processor/DeferredValue.pm
 lib/Form/Factory/Processor/Role.pm
 lib/Form/Factory/Result.pm
@@ -74,7 +77,9 @@ lib/Form/Factory/Result/Gathered.pm
 lib/Form/Factory/Result/Single.pm
 lib/Form/Factory/Stasher.pm
 lib/Form/Factory/Stasher/Memory.pm
+t/.tests.t.swp
 t/lib/Form/Factory/Test/Action.pm
+t/lib/Form/Factory/Test/Action/.Inheritance.pm.swp
 t/lib/Form/Factory/Test/Action/AllControls.pm
 t/lib/Form/Factory/Test/Action/Basic.pm
 t/lib/Form/Factory/Test/Action/Controls.pm
@@ -95,6 +100,7 @@ t/lib/Form/Factory/Test/Interface/HTML.pm
 t/lib/Form/Factory/Test/Result.pm
 t/lib/Form/Factory/Test/Result/Gathered.pm
 t/lib/Form/Factory/Test/Result/Single.pm
+t/lib/TestApp/Action/.Composed.pm.swp
 t/lib/TestApp/Action/Basic.pm
 t/lib/TestApp/Action/Bottom.pm
 t/lib/TestApp/Action/CapitalizeLabel.pm

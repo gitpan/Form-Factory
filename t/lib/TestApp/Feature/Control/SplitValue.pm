@@ -1,5 +1,5 @@
 package TestApp::Feature::Control::SplitValue;
-our $VERSION = '0.018';
+our $VERSION = '0.019';
 use Moose;
 
 with qw( 
@@ -17,7 +17,7 @@ has join_by => (
 
 has split_by => (
     is        => 'ro',
-    isa       => 'Regexp',
+    isa       => 'RegexpRef',
     required  => 1,
     default   => sub { qr{\s*,\s*} },
 );
@@ -39,7 +39,7 @@ sub control_to_value {
 }
 
 package Form::Factory::Feature::Control::Custom::SplitValue;
-our $VERSION = '0.018';
+our $VERSION = '0.019';
 sub register_implementation { 'TestApp::Feature::Control::SplitValue' }
 
 1;

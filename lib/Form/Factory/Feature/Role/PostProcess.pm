@@ -1,5 +1,7 @@
 package Form::Factory::Feature::Role::PostProcess;
-our $VERSION = '0.019';
+BEGIN {
+  $Form::Factory::Feature::Role::PostProcess::VERSION = '0.020';
+}
 use Moose::Role;
 
 requires qw( post_process );
@@ -10,7 +12,7 @@ Form::Factory::Feature::Role::PostProcess - features that run just after process
 
 =head1 VERSION
 
-version 0.019
+version 0.020
 
 =head1 SYNOPSIS
 

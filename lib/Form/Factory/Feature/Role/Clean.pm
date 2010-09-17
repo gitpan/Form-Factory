@@ -1,5 +1,7 @@
 package Form::Factory::Feature::Role::Clean;
-our $VERSION = '0.019';
+BEGIN {
+  $Form::Factory::Feature::Role::Clean::VERSION = '0.020';
+}
 use Moose::Role;
 
 requires qw( clean );
@@ -10,7 +12,7 @@ Form::Factory::Feature::Role::Clean - features that clean up control values
 
 =head1 VERSION
 
-version 0.019
+version 0.020
 
 =head1 SYNOPSIS
 

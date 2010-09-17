@@ -1,5 +1,7 @@
 package Form::Factory::Action::Meta::Class;
-our $VERSION = '0.019';
+BEGIN {
+  $Form::Factory::Action::Meta::Class::VERSION = '0.020';
+}
 use Moose::Role;
 
 =head1 NAME
@@ -8,7 +10,7 @@ Form::Factory::Action::Meta::Class - The meta-class role for form actions
 
 =head1 VERSION
 
-version 0.019
+version 0.020
 
 =head1 SYNOPSIS
 

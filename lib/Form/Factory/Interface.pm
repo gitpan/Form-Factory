@@ -1,5 +1,7 @@
 package Form::Factory::Interface;
-our $VERSION = '0.019';
+BEGIN {
+  $Form::Factory::Interface::VERSION = '0.020';
+}
 use Moose::Role;
 
 use Carp ();
@@ -13,7 +15,7 @@ Form::Factory::Interface - Role for form interface implementations
 
 =head1 VERSION
 
-version 0.019
+version 0.020
 
 =head1 SYNOPSIS
 

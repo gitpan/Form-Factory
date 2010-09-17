@@ -1,5 +1,4 @@
 package Form::Factory::Test::Interface::CLI;
-our $VERSION = '0.019';
 use Test::Able;
 use Test::More;
 use Test::Moose;

@@ -1,5 +1,7 @@
 package Form::Factory::Message;
-our $VERSION = '0.019';
+BEGIN {
+  $Form::Factory::Message::VERSION = '0.020';
+}
 use Moose;
 
 use Moose::Util::TypeConstraints;
@@ -12,7 +14,7 @@ Form::Factory::Message - Handy class for encapsulating messages
 
 =head1 VERSION
 
-version 0.019
+version 0.020
 
 =head1 SYNOPSIS
 

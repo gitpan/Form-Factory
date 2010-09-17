@@ -1,5 +1,7 @@
 package Form::Factory::Control::Role::AvailableChoices;
-our $VERSION = '0.019';
+BEGIN {
+  $Form::Factory::Control::Role::AvailableChoices::VERSION = '0.020';
+}
 use Moose::Role;
 
 use Form::Factory::Control::Choice;
@@ -10,7 +12,7 @@ Form::Factory::Control::Role::AvailableChoices - Controls that list available ch
 
 =head1 VERSION
 
-version 0.019
+version 0.020
 
 =head1 DESCRIPTION
 

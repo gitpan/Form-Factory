@@ -1,5 +1,4 @@
 package TestApp::Feature::Control::Null;
-our $VERSION = '0.019';
 use Moose;
 
 with qw( 
@@ -10,7 +9,6 @@ with qw(
 sub check_control { }
 
 package Form::Factory::Feature::Control::Custom::Null;
-our $VERSION = '0.019';
 sub register_implementation { 'TestApp::Feature::Control::Null' }
 
 1;

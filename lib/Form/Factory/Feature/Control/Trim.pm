@@ -1,5 +1,7 @@
 package Form::Factory::Feature::Control::Trim;
-our $VERSION = '0.019';
+BEGIN {
+  $Form::Factory::Feature::Control::Trim::VERSION = '0.020';
+}
 use Moose;
 
 with qw( 
@@ -16,7 +18,7 @@ Form::Factory::Feature::Control::Trim - Trims whitespace from a control value
 
 =head1 VERSION
 
-version 0.019
+version 0.020
 
 =head1 SYNOPSIS
 

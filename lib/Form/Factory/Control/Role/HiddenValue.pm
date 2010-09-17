@@ -1,5 +1,7 @@
 package Form::Factory::Control::Role::HiddenValue;
-our $VERSION = '0.019';
+BEGIN {
+  $Form::Factory::Control::Role::HiddenValue::VERSION = '0.020';
+}
 use Moose::Role;
 
 =head1 NAME
@@ -8,7 +10,7 @@ Form::Factory::Control::Role::HiddenValue - hidden controls
 
 =head1 VERSION
 
-version 0.019
+version 0.020
 
 =head1 DESCRIPTION
 

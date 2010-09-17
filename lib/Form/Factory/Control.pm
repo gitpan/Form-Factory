@@ -1,5 +1,7 @@
 package Form::Factory::Control;
-our $VERSION = '0.019';
+BEGIN {
+  $Form::Factory::Control::VERSION = '0.020';
+}
 use Moose::Role;
 
 use Form::Factory::Control::Choice;
@@ -13,7 +15,7 @@ Form::Factory::Control - high-level API for working with form controls
 
 =head1 VERSION
 
-version 0.019
+version 0.020
 
 =head1 SYNOPSIS
 

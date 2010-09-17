@@ -1,5 +1,7 @@
 package Form::Factory::Action;
-our $VERSION = '0.019';
+BEGIN {
+  $Form::Factory::Action::VERSION = '0.020';
+}
 use Moose::Role;
 
 use Carp ();
@@ -15,7 +17,7 @@ Form::Factory::Action - Role implemented by actions
 
 =head1 VERSION
 
-version 0.019
+version 0.020
 
 =head2 SYNOPSIS
 

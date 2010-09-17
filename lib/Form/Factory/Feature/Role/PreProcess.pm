@@ -1,5 +1,7 @@
 package Form::Factory::Feature::Role::PreProcess;
-our $VERSION = '0.019';
+BEGIN {
+  $Form::Factory::Feature::Role::PreProcess::VERSION = '0.020';
+}
 use Moose::Role;
 
 requires qw( pre_process );
@@ -10,7 +12,7 @@ Form::Factory::Feature::Role::PreProcess - features that run just before process
 
 =head1 VERSION
 
-version 0.019
+version 0.020
 
 =head1 SYNOPSIS
 

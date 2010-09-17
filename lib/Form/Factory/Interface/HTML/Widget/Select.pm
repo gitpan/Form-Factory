@@ -1,5 +1,7 @@
 package Form::Factory::Interface::HTML::Widget::Select;
-our $VERSION = '0.019';
+BEGIN {
+  $Form::Factory::Interface::HTML::Widget::Select::VERSION = '0.020';
+}
 use Moose;
 
 extends qw( Form::Factory::Interface::HTML::Widget::Element );
@@ -10,7 +12,7 @@ Form::Factory::Interface::HTML::Widget::Select - HTML interface widget helper
 
 =head1 VERSION
 
-version 0.019
+version 0.020
 
 =head1 DESCRIPTION
 

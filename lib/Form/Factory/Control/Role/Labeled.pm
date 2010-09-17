@@ -1,5 +1,7 @@
 package Form::Factory::Control::Role::Labeled;
-our $VERSION = '0.019';
+BEGIN {
+  $Form::Factory::Control::Role::Labeled::VERSION = '0.020';
+}
 use Moose::Role;
 
 =head1 NAME
@@ -8,7 +10,7 @@ Form::Factory::Control::Role::Labeled - labeled controls
 
 =head1 VERSION
 
-version 0.019
+version 0.020
 
 =head1 DESCRIPTION
 

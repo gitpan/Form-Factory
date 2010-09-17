@@ -1,5 +1,7 @@
 package Form::Factory::Control::Password;
-our $VERSION = '0.019';
+BEGIN {
+  $Form::Factory::Control::Password::VERSION = '0.020';
+}
 use Moose;
 
 with qw( 
@@ -14,7 +16,7 @@ Form::Factory::Control::Password - the password control
 
 =head1 VERSION
 
-version 0.019
+version 0.020
 
 =head1 SYNOPSIS
 

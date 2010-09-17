@@ -1,5 +1,7 @@
 package Form::Factory::Processor::Role;
-our $VERSION = '0.019';
+BEGIN {
+  $Form::Factory::Processor::Role::VERSION = '0.020';
+}
 use Moose;
 use Moose::Exporter;
 
@@ -21,7 +23,7 @@ Form::Factory::Processor::Role - Moos-ish helper for action roles
 
 =head1 VERSION
 
-version 0.019
+version 0.020
 
 =head1 SYNOPSIS
 

@@ -1,5 +1,7 @@
 package Form::Factory::Control::SelectMany;
-our $VERSION = '0.019';
+BEGIN {
+  $Form::Factory::Control::SelectMany::VERSION = '0.020';
+}
 use Moose;
 
 with qw(
@@ -17,7 +19,7 @@ Form::Factory::Control::SelectMany - the multi-select control
 
 =head1 VERSION
 
-version 0.019
+version 0.020
 
 =head1 SYNOPSIS
 

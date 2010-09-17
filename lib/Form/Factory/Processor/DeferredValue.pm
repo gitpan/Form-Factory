@@ -1,5 +1,7 @@
 package Form::Factory::Processor::DeferredValue;
-our $VERSION = '0.019';
+BEGIN {
+  $Form::Factory::Processor::DeferredValue::VERSION = '0.020';
+}
 use Moose;
 
 =head1 NAME
@@ -8,7 +10,7 @@ Form::Factory::Processor::DeferredValue - Tag class for deferred_values
 
 =head1 VERSION
 
-version 0.019
+version 0.020
 
 =head1 DESCRIPTION
 

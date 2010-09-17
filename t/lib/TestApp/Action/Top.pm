@@ -1,5 +1,4 @@
 package TestApp::Action::Top;
-our $VERSION = '0.019';
 use Form::Factory::Processor;
 
 has_control foo => (

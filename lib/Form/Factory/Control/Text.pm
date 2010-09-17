@@ -1,5 +1,7 @@
 package Form::Factory::Control::Text;
-our $VERSION = '0.019';
+BEGIN {
+  $Form::Factory::Control::Text::VERSION = '0.020';
+}
 use Moose;
 
 with qw( 
@@ -14,7 +16,7 @@ Form::Factory::Control::Text - A single line text field
 
 =head1 VERSION
 
-version 0.019
+version 0.020
 
 =head1 SYNOPSIS
 

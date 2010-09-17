@@ -1,5 +1,7 @@
 package Form::Factory::Feature::Role::Control;
-our $VERSION = '0.019';
+BEGIN {
+  $Form::Factory::Feature::Role::Control::VERSION = '0.020';
+}
 use Moose::Role;
 
 requires qw( check_control );
@@ -10,7 +12,7 @@ Form::Factory::Feature::Role::Control - Form features tied to particular control
 
 =head1 VERSION
 
-version 0.019
+version 0.020
 
 =head1 SYNOPSIS
 
